@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/menu/menu",
+    "pages/kanaLearn/select",
+    "pages/kanaLearn/kanaRecog",
+    "pages/kanaLearn/result"
+  
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fac",
+    "navigationBarTitleText": "华工日协学习助手",
+    "navigationBarTextStyle":"black",
+    "backgroundColor":"#fac"
+  }
+}

@@ -1,0 +1,72 @@
+/* pages/kanaLearn/select.wxss */
+.slogen{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: #fac;
+}
+.kana{
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  font-size: 30px;
+}
+
+.selectableKana{
+  display: inline-block;
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  height:100rpx ;
+  width: 130rpx;
+  font-size: 25px;
+  border: 0;
+  color: rgba(34, 34, 34, 0.685);
+  }
+.konge{
+  font-size: 25px;
+  display: inline-block;
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  height:100rpx ;
+  width: 130rpx;
+  color: #fff;
+  border: 0;
+
+}
+.selectAll{
+  color: #fac;
+}
+.button{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width:250rpx;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: #fac;
+}
+.function{
+    margin-bottom: 20px;
+  margin-top: 20px;
+  width:250rpx;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color:#fff ;
+  background-color: #fac;
+}
+.all{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+}
