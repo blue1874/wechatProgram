@@ -35,7 +35,14 @@ App({
   },
   globalData: {
     userInfo: null,
-    selectedKana:[],
-    kanaNumber:0,
+    selectedKana:[],  //选择假名
+    wrongKana:[],     //错误假名
+    kanaNumber:0,     //假名个数
+    chosenHKana: [],  //清音平假名
+    chosenKKana: [],  //清音片假名
+    chosenHDKana: [], //浊音平假名
+    chosenHYKana: [], //拗音平假名
+    chosenKDKana: [], //浊音片假名
+    chosenKYKana: [], //拗音片假名
   }
 })

@@ -11,9 +11,9 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.4",
+	"libVersion": "2.2.5",
 	"appid": "wx31f10e1fa2610b6c",
-	"projectname": "KanaLearning",
+	"projectname": "benkyouAssistant",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

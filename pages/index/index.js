@@ -56,5 +56,13 @@ Page({
     wx.redirectTo({
       url: "../menu/menu",
     })
-  }
+  },
+  //just for test
+  /*gotoSelect:function(){
+    app.globalData.wrongKana=[111,1,3,4,5,92,6,7,32,65,89,75,63,76,87];
+    wx.redirectTo({
+      url: '../kanaLearn/result/result',
+    })
+
+  }*/
 })

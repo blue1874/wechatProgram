@@ -10,7 +10,7 @@ Page({
   //my funtions
   gotoKanaLearn:function(){
     wx.redirectTo({
-      url:"../kanaLearn/select",
+      url:"../kanaLearn/select/select",
     })
   },
 

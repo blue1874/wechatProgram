@@ -3,9 +3,9 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/menu/menu",
-    "pages/kanaLearn/select",
-    "pages/kanaLearn/kanaRecog",
-    "pages/kanaLearn/result"
+    "pages/kanaLearn/select/select",
+    "pages/kanaLearn/kanaRecog/kanaRecog",
+    "pages/kanaLearn/result/result"
   
   ],
   "window":{

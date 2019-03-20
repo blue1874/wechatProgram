@@ -1,0 +1,114 @@
+/* pages/kanaLearn/select.wxss */
+.slogen{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: #fac;
+}
+.kana{
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  font-size: 30px;
+}
+
+.selectableKana{
+  display: inline-block;
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  height:100rpx ;
+  width: 130rpx;
+  font-size: 15px;
+  border: 0;
+  color: rgba(34, 34, 34, 0.685);
+  }
+.konge{
+  font-size: 25px;
+  display: inline-block;
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  height:100rpx ;
+  width: 130rpx;
+  color: #fff;
+  border: 0;
+}
+.xkonge{
+  font-size: 0.5px;
+  display: inline-block;
+  justify-content: left; 
+  align-items: left;
+  text-align: left;
+  height:1rpx ;
+  width: 130rpx;
+  color: #fff;
+  border: 0;
+
+}
+.selectAll{
+  color: #fac;
+  font-size: 25px;
+}
+.button{
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width:250rpx;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color: #fac;
+}
+.function{
+    margin-bottom: 20px;
+  margin-top: 20px;
+  width:250rpx;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  color:#fff ;
+  background-color: #fac;
+}
+.all{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100rpx 0;
+  box-sizing: border-box;
+}
+.kanaBlock{
+margin-bottom: 10%;
+}
+.subtitle{
+display: flex;
+justify-content: center;
+margin-bottom: 0%;
+width:100%;
+height: 20%;
+}
+.foldtapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left:10% ;
+  height:20%;
+  width:400rpx;
+  font-size: 15px;
+  color: #fac;
+  border-style:solid;
+  border-radius: 10rpx;
+  border-width: 3rpx;
+  border-color: #fac; 
+}
+.smallfont{
+font-size: 12px;
+
+
+}
+.rotateRight{
+    transform: rotate(180deg); /*/180°旋转图片。*/
+}
