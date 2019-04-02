@@ -1,8 +1,22 @@
 <!--pages/menu/menu.wxml-->
-<view class="container">
- <button class='function' bindtap="gotoKanaLearn">假名自测</button>
-
-  <button type="default" disabled='true'>后续功能开发中…</button>
-
+<view class = 'section'>
+  <view class = "top" bindtap = "gotoKanaLearn">假名自测</view>
+  <view class = "top" bindtap = "setActive">第一单元（1-4课）</view>
+    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoFirstSection'>第一课</view>
+    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoSecondSection'>第二课</view>
+    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoThirdSection'>第三课</view>
+    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoFourthSection'>第四课</view>
+  <view class = 'top' bindtap = "gotoSecondUnit">第二单元（5-8课）</view>
+ <!--  <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
+    content
+  </view> -->
+  <view class = 'top' bindtap = "gotoThirdUnit">第三单元（9-12课）</view>
+  <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
+    content
+  </view> -->
+  <view class = 'top' bindtap = "back">返回</view>
+  <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
+    content
+  </view> -->
 </view>
 

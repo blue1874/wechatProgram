@@ -1,18 +1,21 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/menu/menu",
     "pages/kanaLearn/select/select",
     "pages/kanaLearn/kanaRecog/kanaRecog",
-    "pages/kanaLearn/result/result"
-  
+    "pages/kanaLearn/result/result",
+    "pages/context/theFirstUnit/theFirstSection",
+    "pages/context/theFirstUnit/theSecondSection",
+    "pages/context/theFirstUnit/theThirdSection",
+    "pages/context/theFirstUnit/theFourthSection"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fac",
     "navigationBarTitleText": "华工日协学习助手",
-    "navigationBarTextStyle":"black",
-    "backgroundColor":"#fac"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fac"
   }
 }

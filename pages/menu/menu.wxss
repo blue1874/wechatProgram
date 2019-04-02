@@ -1,12 +1,42 @@
 /* pages/menu/menu.wxss */
-button{
-  width: 400rpx;
-  margin-top:200rpx; 
-  border-style: solid;
-  border-width:2rpx; 
+.section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60px;
+  background-color: aquamarine; 
+  align-items: center;
+  justify-content: center;
+}
 
+.top {
+  display: flex;
+  height: 40px;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  margin: 4px;
+  color:#fff ;
+  background-color: #fac;
+  box-shadow: 4px, 1px, 4px, #000000;
+  flex-direction: column;
 }
-.function{
- color:#fff ;
- background-color: #fac;
+.follow {
+  height: 30px;
+  width: 60%;
+  margin: 2px;
+  color:#fff ;
+  background-color: #fac;
+  flex-direction: column;
+  text-align: center;
 }
+
+.display {
+  display: block;
+}
+
+.nondisplay {
+  display: none;
+}
+
