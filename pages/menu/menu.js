@@ -1,75 +1,68 @@
 // pages/menu/menu.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    active : false,
+    active: [0, 0, 0, 0]
   },
   //my funtions
-  setActive:function()
+  setActive: function(e)
   {
-    if(this.data.active)
-    {
-      this.setData({
-        active: false,
-      })
-    }
-    else
-    {
-      this.setData({
-        active: true,
-      })
-    }
+    const that = this;
+    var id = e.target.dataset.id;
+    that.data.active[id] = (that.data.active[id] + 1) % 2;
+    that.setData({
+      active: that.data.active
+    })
   },
+
   back:function()
   {
     wx.redirectTo({
       url: '/pages/index/index',
     })
   },
+
   gotoKanaLearn:function()
   {
     wx.redirectTo({
       url: '../kanaLearn/select/select',
       })
   },
-  gotoTestFunction:function()
+
+  gotoU1S1:function()
   {
     wx.redirectTo({
-      url: '../test/test1',
-      })
-  },
-  gotoFirstSection:function()
-  {
-    wx.redirectTo({
-      url: '../context/theFirstUnit/theFirstSection',
+      url: '../context/U1/S1/S1',
     })
   },
-  gotoSecondSection: function () {
+
+  gotoU1S2: function () {
     wx.redirectTo({
-      url: '../context/theFirstUnit/theSecondSection',
+      url: '../context/U1/S2/S2',
     })
   },
-  gotoThirdSection: function () {
+  gotoU1S3: function () {
     wx.redirectTo({
-      url: '../context/theFirstUnit/theThirdSection',
+      url: '../context/U1/S3/S3',
     })
   },
-  gotoFourthSection: function () {
+  gotoU1S4: function () {
     wx.redirectTo({
-      url: '../context/theFirstUnit/theFourthSection',
+      url: '../context/U1/S4/S4',
     })
   },
-  gotoSecondUnit: function () {
+
+  gotoU2S1: function () {
     wx.redirectTo({
-      url: '../context/theSecondUnit/theFirstSection',
+      url: '../context/U2/S1/S1',
     })
   },
-  gotoThirdUnit: function () {
+
+  gotoU3S1: function () {
     wx.redirectTo({
-      url: '../context/theThirdUnit/theFirstSetion',
+      url: '../context/U3/S1/S1',
     })
   },
   /**

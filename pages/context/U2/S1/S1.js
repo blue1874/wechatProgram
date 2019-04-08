@@ -1,46 +1,18 @@
-// pages/context/theFirstUnit/theFirstUnit.js
+// pages/context/U2/S1/S1.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentData: 0,
-  },
-  //获取当前滑块的index
-  bindchange: function (e) {
-    const that = this;
-    that.setData({
-      currentData: e.detail.current
-    })
-  },
-  //点击切换，滑块index赋值
-  checkCurrent: function (e) {
-    const that = this;
 
-    if (that.data.currentData === e.target.dataset.current) {
-      return false;
-    } else {
+  },
 
-      that.setData({
-        currentData: e.target.dataset.current
-      })
-    }
-  },
-  home: function() {
-    wx.redirectTo({
-      url: '/pages/index/index',
-    })
-  },
-  back: function() {
-    wx.redirectTo({
-      url: '/pages/menu/menu',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
   },
 
   /**

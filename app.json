@@ -6,10 +6,16 @@
     "pages/kanaLearn/select/select",
     "pages/kanaLearn/kanaRecog/kanaRecog",
     "pages/kanaLearn/result/result",
-    "pages/context/theFirstUnit/theFirstSection",
-    "pages/context/theFirstUnit/theSecondSection",
-    "pages/context/theFirstUnit/theThirdSection",
-    "pages/context/theFirstUnit/theFourthSection"
+    "pages/context/U1/S1/S1",
+    "pages/context/U1/S2/S2",
+    "pages/context/U1/S3/S3",
+    "pages/context/U1/S4/S4",
+    "pages/context/U2/S1/S1",
+    "pages/context/U3/S1/S1",
+    "pages/context/U1/S1/word/recog",
+    "pages/context/U1/S1/word/result",
+    "pages/context/U1/S1/exercise/recog",
+    "pages/context/U1/S1/exercise/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

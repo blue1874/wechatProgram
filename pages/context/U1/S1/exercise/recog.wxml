@@ -1,0 +1,25 @@
+<!--pages/context/U1/S1/word/recog.wxml-->
+<view class='slogen' center>{{currentNumber}}/{{totalNumber}}</view>
+
+<view class='question'>
+{{exercises[currentNumber - 1].question}}
+</view>
+<view class='bi'>
+  <block wx:if="{{!wrongFlag}}">
+    <form bindsubmit='formSubmit'>
+      <view wx:for="{{exercises[currentNumber - 1].options}}" wx:for-item="i" wx:key="op">
+          <view class='options {{i.status == 1 ? "highlight" : ""}}' bindtap='chosen' data-index = "{{index}}">
+          {{i.op}}  {{i.value}}
+          </view> 
+      </view>
+      <button form-type='submit'  class='function' >提交</button>
+    </form>
+  </block>
+  <block wx:if="{{wrongFlag}}">
+    <view>错误！正确的选项为{{exercises[currentNumber - 1].correctAns}}</view>
+    <button bindtap='wrongComfirm'  class='function' >下一个</button>
+  </block>
+</view>
+<view class='bi'><button bindtap='gotoSelect'>返回选择界面</button></view>
+
+

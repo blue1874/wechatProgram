@@ -44,5 +44,13 @@ App({
     chosenHYKana: [], //拗音平假名
     chosenKDKana: [], //浊音片假名
     chosenKYKana: [], //拗音片假名
+    chosentWord:[], //选中单词
+    wrongWord: [], //错误单词
+    chosenWordNumber: 0, //选中单词个数
+    wordNumber: 0, //单词个数
+    wrongExercise: [], //错题
+    chosenExercise: [], //选中题目
+    wrongExercise: [], //错误题目
+    chosenExerciseNumber: 0, //选中题目个数
   }
 })

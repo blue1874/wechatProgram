@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.2.5",
+	"libVersion": "2.6.4",
 	"appid": "wx31f10e1fa2610b6c",
 	"projectname": "benkyouAssistant",
 	"isGameTourist": false,

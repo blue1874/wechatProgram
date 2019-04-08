@@ -352,12 +352,10 @@ foldOrNot:function(e){
   })
   },
   //开始识别
-  beginRecog: function (e) {
-
+  beginRecog: function(e) {
     wx.redirectTo({
-      url: '../kanaRecog/kanaRecog'
+      url: '../kanaRecog/kanaRecog',
     })
-
   },
 
   /**

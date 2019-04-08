@@ -1,8 +1,8 @@
-<!--pages/kanaLearn/kanaRecog.wxml-->
+<!--pages/context/U1/S1/word/recog.wxml-->
 <view class='slogen' center>{{currentNumber}}/{{totalNumber}}</view>
 
-<view class='kana'>
-{{Kana[SSkana[currentNumber-1]].kakiKata}}
+<view class='word'>
+{{words[currentNumber - 1].meaning}}
 </view>
 <view class='bi'>
   <block wx:if="{{!wrongFlag}}">
@@ -14,8 +14,9 @@
 </form>
 </block>
 <block wx:if="{{wrongFlag}}">
-<view>错误！正确的读音为{{Kana[SSkana[currentNumber-1]].yomiKata}}</view>
+<view>错误！正确的读音为{{words[currentNumber - 1].word}}</view>
 <button bindtap='wrongComfirm'  class='function' >下一个</button>
 </block>
 </view>
-<view class='be'><button bindtap='gotoSelect'>返回选择界面</button></view>
+<view class='bi'><button bindtap='gotoSelect'>返回选择界面</button></view>
+

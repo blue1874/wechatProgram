@@ -1,0 +1,31 @@
+<!--pages/context/U1/S1/word/result.wxml-->
+<view class='bigBox'>
+<icon wx:if="{{!wrongFlag}}" size="{{70}}" color='#ffaacc' icon type='success'/>
+<icon wx:if="{{wrongFlag}}" size="{{70}}" color='#ffaacc' icon type='{{correctNumber==0?"cancel":"warn"}}'/>
+
+<view class='slogen'>正确率：{{correctNumber}}/{{totalNumber}}</view>
+<view class='smallslogen'>{{correctNumber==0?"小老弟你怎么回事…":(percentage==100?"全都对了，学霸！":(percentage>60?"还算不错呢":"得继续加吧劲呢"))}}</view>
+<block wx:if="{{wrongFlag}}">
+  <view class='folderbox'>
+    <button class='folder' bindtap='unfold'>点击查看错误单词{{foldState?"▷":"▽"}}</button>
+    <view hidden='{{foldState}}'>
+      <scroll-view scroll-y='{{(wrongLength>6)?true:false}}' class='(wrongLength>6)?"scrollll":"scrol"'>
+          <block wx:for='{{wrongWordInOrder}}' wx:for-item='i' wx:key='' >
+            <view class='wrongWordsbox'>
+              <label class='wrongWords'>{{i.meaning}}</label>
+              <label class='wrongWords'>{{i.word}}</label>
+            </view>
+          </block>
+      </scroll-view>
+    </view>
+  </view>
+</block>
+
+<button bindtap='gotoRecog' data-mode='{{0}}'>再来一次</button>
+<block wx:if="{{wrongFlag}}">
+<button bindtap='gotoRecog' data-mode='{{1}}'>错误再刷</button>
+</block>
+<button bindtap='gotoSelect'>重新选择</button>
+<button bindtap='gotoMenu' >返回主菜单</button>
+
+</view>

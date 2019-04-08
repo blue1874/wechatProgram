@@ -1,20 +1,20 @@
 <!--pages/menu/menu.wxml-->
 <view class = 'section'>
-  <view class = "top" bindtap = "gotoKanaLearn">假名自测</view>
-  <view class = "top" bindtap = "setActive">第一单元（1-4课）</view>
-    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoFirstSection'>第一课</view>
-    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoSecondSection'>第二课</view>
-    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoThirdSection'>第三课</view>
-    <view class = "follow {{active ? 'display' : 'nondisplay'}}" bindtap = 'gotoFourthSection'>第四课</view>
-  <view class = 'top' bindtap = "gotoSecondUnit">第二单元（5-8课）</view>
+  <view class = "function big" bindtap = "gotoKanaLearn">假名自测</view>
+  <view class = "function big" bindtap = "setActive" data-id = '0'>第一单元（1-4课）</view>
+    <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S1'>第一课</view>
+    <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S2'>第二课</view>
+    <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S3'>第三课</view>
+    <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S4'>第四课</view>
+  <view class = 'function big' bindtap = "setActive" data-id = '1'>第二单元（5-8课）</view>
  <!--  <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
     content
   </view> -->
-  <view class = 'top' bindtap = "gotoThirdUnit">第三单元（9-12课）</view>
+  <view class = 'function big' bindtap = "setActive" data-id = '2'>第三单元（9-12课）</view>
   <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
     content
   </view> -->
-  <view class = 'top' bindtap = "back">返回</view>
+  <view class = 'function big' bindtap = "back">返回</view>
   <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
     content
   </view> -->

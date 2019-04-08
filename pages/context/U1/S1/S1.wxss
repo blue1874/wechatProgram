@@ -1,0 +1,86 @@
+/* pages/context/theFirstUnit/theFirstUnit.wxss */
+page {
+  height: 100%;
+}
+
+.tab {
+  float: left;
+  width: 50%;
+  text-align: center;
+  padding: 10rpx 0;
+  height: 30px;
+}
+
+.topTabSwiper {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  zoom: 1;
+}
+ 
+.topTabSwiper:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+ 
+.tabBorer {
+  border-bottom: 1px solid rgba(255, 0, 0, 0.349);
+  color: rgba(255, 0, 0, 0.397);
+}
+
+.words {
+  display: flex;
+  text-align: left;
+  padding: 4px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.521);
+}
+
+.highlight {
+  background-color: pink;
+}
+.swiper {
+  width: 100%;
+  height:80%;
+}
+
+.center-item {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 5px;
+}
+
+button {
+  text-align: center;
+  background-color: rgba(127, 255, 212, 0.514);
+  color: rgba(238, 47, 13, 0.459);
+  box-shadow: 4px 1px 1px #cccccc;
+}
+
+.j-center {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+}
+
+text {
+  position: absolute;
+  top: 40%;
+  left: 30%;
+} 
+/* .exercises {
+  width: 25%;
+  display: flex;
+  float: left;
+  background-color: white;
+  box-shadow: 0;
+} */
+
+.short {
+  width: 30%;
+}
+
+.long {
+  width: 40%
+}
