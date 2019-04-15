@@ -53,7 +53,7 @@ Page({
   },
   //my functions
   gotoMenu:function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: "../menu/menu",
     })
   },

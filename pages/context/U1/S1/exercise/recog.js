@@ -9,22 +9,82 @@ Page({
     clear: '',
     exercises: [
       { 
-        question: "あんたわ今どこにいるの？", 
+        question: "ー李さんは（　）ですか。\nーはい、学生です。", 
         options: [
-          { op: "A", value: "中国", status: 0 }, 
-          { op: "B", value: "日本", status: 0 }, 
-          { op: "C", value: "アメリカ", status: 0 }, 
-          { op: "D", value: "韓国", status: 0 },
+          { op: "A", value: "中国人", status: 0 }, 
+          { op: "B", value: "日本人", status: 0 }, 
+          { op: "C", value: "学生", status: 0 }, 
+          { op: "D", value: "先生", status: 0 },
           ], 
-        correctAns: ["A",]
+        correctAns: ["C",]
         },
       {
-        question: "??",
+        question: "ーあなたは  李さんですか。\n－（　）。",
         options: [
-          { op: "A", value: "???", status: 0 },
-          { op: "B", value: "???", status: 0 },
-          { op: "C", value: "???", status: 0 },
-          { op: "D", value: "???", status: 0 },
+          { op: "A", value: "はい、李さんです", status: 0 },
+          { op: "B", value: "いいえ、そうです", status: 0 },
+          { op: "C", value: "はい、李です", status: 0 },
+          { op: "D", value: "いいえ、李です", status: 0 },
+        ],
+        correctAns: ["C",]
+      },
+      {
+        question: "ーあなたは  小野さんですか。－（　）。",
+        options: [
+          { op: "A", value: "はい、李です", status: 0 },
+          { op: "B", value: "いいえ、小野じゃありません", status: 0 },
+          { op: "C", value: "はい、小野じゃです。", status: 0 },
+          { op: "D", value: "いいえ、そうです", status: 0 },
+        ],
+        correctAns: ["B",]
+      },
+      {
+        question: "ーあなたは  大学（　）先生ですか。\n－はい、そうです。",
+        options: [
+          { op: "A", value: "の", status: 0 },
+          { op: "B", value: "に", status: 0 },
+          { op: "C", value: "は", status: 0 },
+          { op: "D", value: "では", status: 0 },
+        ],
+        correctAns: ["A",]
+      },
+      {
+        question: "ーあなたは  中村さんですか。\n－はい、（）。",
+        options: [
+          { op: "A", value: "わたしは  村上です", status: 0 },
+          { op: "B", value: "あなたは  村上です", status: 0 },
+          { op: "C", value: "わたしは  中村です", status: 0 },
+          { op: "D", value: "あなたは  中村です", status: 0 },
+        ],
+        correctAns: ["C",]
+      },
+      {
+        question: "ーはじめまして、李です、（　）。\n ーはじめまして。",
+        options: [
+          { op: "A", value: "こちらこそ", status: 0 },
+          { op: "B", value: "わかりません", status: 0 },
+          { op: "C", value: "そうです", status: 0 },
+          { op: "D", value: "よろしくおねがいします", status: 0 },
+        ],
+        correctAns: ["D",]
+      },
+      {
+        question: "ーどうぞよろしく。\n－（）、よろしく  おねがいします。",
+        options: [
+          { op: "A", value: "わかりません", status: 0 },
+          { op: "B", value: "こちらこそ", status: 0 },
+          { op: "C", value: "そうです", status: 0 },
+          { op: "D", value: "すみません", status: 0 },
+        ],
+        correctAns: ["B",]
+      },
+      {
+        question: "（　）、すみません。",
+        options: [
+          { op: "A", value: "あっ", status: 0 },
+          { op: "B", value: "はっ", status: 0 },
+          { op: "C", value: "の", status: 0 },
+          { op: "D", value: "えっ", status: 0 },
         ],
         correctAns: ["A",]
       },
@@ -38,7 +98,7 @@ Page({
   //my function
   //返回选择界面
   gotoSelect: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../S1',
     })
   },
@@ -46,18 +106,30 @@ Page({
   chosen: function (e) {
     const that = this;
     var i1 = e.target.dataset.index;
+    var ex = that.data.exercises[that.data.currentNumber - 1];
     //console.log(i1);
     //console.log(that.data.currentNumber);
     //console.log(that.data.exercises[that.data.currentNumber - 1]);
-    var i = that.data.exercises[that.data.currentNumber - 1].options[i1];
-    i.status = i.status == 1 ? 0 : 1;
+    //var i = ex.options[i1];
+    console.log("正确答案数量", ex.correctAns.length);
+    if (ex.correctAns.length == 1) //单选题
+    {
+      for (var j = 0; j < ex.options.length; j++)
+      {
+          ex.options[j].status = j == i1 ? 1 : 0;
+      }
+    }
+    else //多选题
+    {
+      ex.options[i1].status = i.status == 1 ? 0 : 1;
+    }
     that.setData({
       exercises: that.data.exercises,
     })
   },
 
   //点击提交或小键盘的确定按钮事件
-  formSubmit: function (e) {
+  input: function (e) {
     const that = this;
     var i = that.data.exercises[that.data.currentNumber - 1].options;
     console.log("options:", i);
@@ -110,6 +182,7 @@ Page({
   //接受选择好的数组，并且洗牌
   onLoad: function () {
     app.globalData.chosenExercise = this.data.exercises;
+    app.globalData.wrongExercise = [];
     this.setData({totalNumber: this.data.exercises.length});
     // console.log('洗牌前顺序：', app.globalData.chosenExercise)
     // var changeOrder = app.globalData.chosenExercise;

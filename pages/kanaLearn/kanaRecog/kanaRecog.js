@@ -230,7 +230,7 @@ Page({
   //my function
   //返回选择界面
   gotoSelect:function(){
-  wx.redirectTo({
+  wx.navigateTo({
     url: '../../kanaLearn/select/select',
   })
   },
@@ -268,7 +268,7 @@ Page({
     }
     this.setData({clear:''})
     
-    if(this.data.currentNumber>this.data.totalNumber){wx.redirectTo({
+    if(this.data.currentNumber>this.data.totalNumber){wx.navigateTo({
       url: '../result/result?cN='+this.data.correctNumber,
     })}
       }
@@ -279,7 +279,7 @@ Page({
     this.setData({ wrongFlag: false })
     this.setData({ currentNumber: (this.data.currentNumber + 1) })
     if (this.data.currentNumber > this.data.totalNumber) {
-      wx.redirectTo({
+      wx.navigateTo({
         url: '../result/result?cN=' + this.data.correctNumber,
       })
     }
@@ -302,8 +302,6 @@ Page({
         changeOrder[index]=tmp;
       }
     }
-   
-
     this.setData({ totalNumber: app.globalData.kanaNumber })
     this.setData({ SSkana: changeOrder })
 

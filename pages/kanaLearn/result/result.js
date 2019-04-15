@@ -228,28 +228,30 @@ Page({
   //my function
   //返回主菜单
   gotoMenu:function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../../menu/menu',
     })
   },
   //再来一次（0为保持原选择数组进入识别界面，1为择错数组替换选择数组进入识别界面）
   gotoRecog:function(e){
     if (e.target.dataset.mode == 1) {
-      if (app.globalData.wrongKana.length==0) {console.log("No wrong Kana")   //判断是否错误个数为零
-      return}
-     
-       app.globalData.selectedKana=app.globalData.wrongKana,
-       app.globalData.kanaNumber = app.globalData.selectedKana.length,
-       app.globalData.wrongKana=[] 
+      if (app.globalData.wrongKana.length==0) 
+      {
+        console.log("No wrong Kana");   //判断是否错误个数为零
+        return;
+      }
+       app.globalData.selectedKana=app.globalData.wrongKana;
+       app.globalData.kanaNumber = app.globalData.selectedKana.length;
        }
-    wx.redirectTo({
+    app.globalData.wrongKana = [];
+    wx.navigateTo({
       url: '../kanaRecog/kanaRecog',
       })
     
   },
   //重新选择
   gotoSelect:function(){
-   wx.redirectTo({
+   wx.navigateTo({
       url: '../select/select',
     })
   },

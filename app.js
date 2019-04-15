@@ -50,7 +50,6 @@ App({
     wordNumber: 0, //单词个数
     wrongExercise: [], //错题
     chosenExercise: [], //选中题目
-    wrongExercise: [], //错误题目
     chosenExerciseNumber: 0, //选中题目个数
   }
 })

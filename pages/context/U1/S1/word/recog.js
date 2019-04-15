@@ -17,7 +17,7 @@ Page({
   //my function
   //返回选择界面
   gotoSelect: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../S1',
     })
   },
@@ -78,6 +78,8 @@ Page({
   //接受选择好的数组，并且洗牌
   onLoad: function (options) {
     console.log('洗牌前顺序：', app.globalData.chosenWord)
+    app.globalData.wrongWord = [];
+    
     var changeOrder = app.globalData.chosenWord;
     var n = app.globalData.chosenWord.length;
     var tmp, index, i;

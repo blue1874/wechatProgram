@@ -28,20 +28,14 @@ Page({
         console.log("No wrong Exercise")   //判断是否错误个数为零
         return
       }
-        app.globalData.selectedExercise = app.globalData.wrongExercise,
-        // app.globalData.exerciseNumber = app.globalData.selectedExercise.length,
-        app.globalData.wrongExercise = []
+        app.globalData.chosenExercise = app.globalData.wrongExercise;
+        // app.globalData.exerciseNumber = app.globalData.chosenExercise.length,
     }
+    app.globalData.wrongExercise = [];
     wx.redirectTo({
       url: '../exercise/recog',
     })
 
-  },
-  //返回上一层
-  gotopre: function () {
-    wx.redirectTo({
-      url: '../exercise/S1',
-    })
   },
   //折叠显示
   unfold: function () {

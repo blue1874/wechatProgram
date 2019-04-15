@@ -27,6 +27,9 @@ page {
   flex-direction: column;
 }
 
+.grey {
+  background-color: gray;
+}
 .big {
   width: 80%;
 }

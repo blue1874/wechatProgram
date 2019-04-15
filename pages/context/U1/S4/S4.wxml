@@ -1,2 +1,25 @@
-<!--pages/context/U1/S4/S4.wxml-->
-<text>pages/context/U1/S4/S4.wxml</text>
+<!--pages/context/theFirstUnit/theFirstSection.wxml-->
+<view class='topTabSwiper'>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' id="word"  data-current = "0" bindtap='checkCurrent'>单词</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' id="exercise" data-current = "1" bindtap='checkCurrent'>练习</view>
+</view>
+<swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
+  <swiper-item>
+  <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true">
+    <block wx:for="{{words}}" wx:for-item="i" wx:key="">
+      <button class='words {{i.status == 1 ? "highlight" : ""}}' bindtap='wordChosen' data-index = "{{index}}">{{i.word}}  ({{i.property}}) {{i.meaning}}</button> 
+    </block>
+    <view class = "center-item">
+      <button class='short' bindtap='wordAllChosen'>全选</button>
+      <button class='short' bindtap='wordUnChosen'>反选</button>
+      <button class='short' bindtap='wordInput' disabled='{{!state}}'>提交</button>
+    </view>
+  </scroll-view>
+  </swiper-item>
+  <swiper-item>
+    <view class = "center-item">
+        <text class='j-center'>本章节共有{{exercises.length}}道测试题</text>
+        <button class='long j-center' bindtap='testBegin'>开始测试</button>
+    </view>
+  </swiper-item>
+</swiper>

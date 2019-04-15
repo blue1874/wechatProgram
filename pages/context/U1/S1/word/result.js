@@ -28,10 +28,10 @@ Page({
         console.log("No wrong Kana")   //判断是否错误个数为零
         return
       }
-        app.globalData.selectedWord = app.globalData.wrongWord,
-        app.globalData.wordNumber = app.globalData.selectedWord.length,
-        app.globalData.wrongWord = []
+        app.globalData.chosenWord = app.globalData.wrongWord;
+        app.globalData.wordNumber = app.globalData.chosenWord.length;
     }
+    app.globalData.wrongWord = [];
     wx.redirectTo({
       url: '../word/recog',
     })
@@ -40,7 +40,7 @@ Page({
   //重新选择
   gotoSelect: function () {
     wx.redirectTo({
-      url: '../word/S1',
+      url: '../S1',
     })
   },
   //折叠显示

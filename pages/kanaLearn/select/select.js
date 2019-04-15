@@ -347,13 +347,13 @@ foldOrNot:function(e){
 },
   //返回主菜单
   gotoMenu:function(){
-  wx.redirectTo({
+  wx.navigateTo({
     url: '../../menu/menu',
   })
   },
   //开始识别
   beginRecog: function(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../kanaRecog/kanaRecog',
     })
   },

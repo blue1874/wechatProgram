@@ -6,11 +6,12 @@
     <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S2'>第二课</view>
     <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S3'>第三课</view>
     <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1S4'>第四课</view>
-  <view class = 'function big' bindtap = "setActive" data-id = '1'>第二单元（5-8课）</view>
+    <view class = "function small {{active[0] == 1 ? 'display' : 'nondisplay'}}" bindtap = 'gotoU1UR'>单元总结</view>
+  <view class = 'function big grey' bindtap = "disable" data-id = '1'>第二单元（5-8课）</view>
  <!--  <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
     content
   </view> -->
-  <view class = 'function big' bindtap = "setActive" data-id = '2'>第三单元（9-12课）</view>
+  <view class = 'function big grey' bindtap = "disable" data-id = '2'>第三单元（9-12课）</view>
   <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
     content
   </view> -->
