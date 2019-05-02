@@ -4,7 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: [0, 0, 0, 0]
+    active: [false, false, false, false]
   },
   //my funtions
   disable: function()
@@ -40,42 +40,11 @@ Page({
       })
   },
 
-  gotoU1S1:function()
+  gotoSelect:function(e)
   {
+    var index = e.target.dataset.index;
     wx.navigateTo({
-      url: '../context/U1/S1/S1',
-    })
-  },
-
-  gotoU1S2: function () {
-    wx.navigateTo({
-      url: '../context/U1/S2/S2',
-    })
-  },
-  gotoU1S3: function () {
-    wx.navigateTo({
-      url: '../context/U1/S3/S3',
-    })
-  },
-  gotoU1S4: function () {
-    wx.navigateTo({
-      url: '../context/U1/S4/S4',
-    })
-  },
-  gotoU1UR: function () {
-    wx.navigateTo({
-      url: '../context/U1/UR/UR',
-    })
-  },
-  gotoU2S1: function () {
-    wx.navigateTo({
-      url: '../context/U2/S1/S1',
-    })
-  },
-
-  gotoU3S1: function () {
-    wx.navigateTo({
-      url: '../context/U3/S1/S1',
+      url: '../context/select/select?section=' + index,
     })
   },
   /**

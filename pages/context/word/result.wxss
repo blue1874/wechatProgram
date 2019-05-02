@@ -1,0 +1,59 @@
+/* pages/context/U1/S1/word/result.wxss */
+button{
+  margin-top:5% ;
+  margin-bottom:5% ;
+  width: 300rpx;
+    border-style: solid;
+  border-width:2rpx; 
+  color: #fac;
+  box-shadow: 4px 1px 1px #cccccc;
+}
+.bigBox{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top:100rpx; 
+  box-sizing: border-box;
+}
+.slogen{
+  margin: 2%;
+  font-size: 40rpx;
+}
+.smallslogen{
+  margin: 2%;
+  font-size: 30rpx;
+}
+.wrongWordsbox{
+  width: 85%;
+  height: 35px;
+  display: flex;
+  align-items: left;
+  text-align: center;
+  background-color: #eee;
+  border-style:solid;
+  border-color:#fff; 
+  border-bottom-width:2px;
+  border-left: 0;
+  border-right: 0;
+  border-top:0; 
+}
+.words {
+  display: flex;
+  text-align: left;
+  padding: 4px;
+  background-color: white;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.521);
+  box-shadow: none;
+}
+.folder{
+  width: 85%;
+  margin-bottom:0%; 
+  font-size: 20px;
+  color:#faaaac;
+}
+.folderbox{
+  margin-bottom:13%; 
+  width: 100%;
+}

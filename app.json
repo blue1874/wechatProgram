@@ -6,33 +6,11 @@
     "pages/kanaLearn/select/select",
     "pages/kanaLearn/kanaRecog/kanaRecog",
     "pages/kanaLearn/result/result",
-    "pages/context/U1/S1/S1",
-    "pages/context/U1/S2/S2",
-    "pages/context/U1/S3/S3",
-    "pages/context/U1/S4/S4",
-    "pages/context/U1/UR/UR",
-    "pages/context/U2/S1/S1",
-    "pages/context/U3/S1/S1",
-    "pages/context/U1/S1/word/recog",
-    "pages/context/U1/S1/word/result",
-    "pages/context/U1/S1/exercise/recog",
-    "pages/context/U1/S1/exercise/result",
-    "pages/context/U1/S2/word/recog",
-    "pages/context/U1/S2/word/result",
-    "pages/context/U1/S2/exercise/recog",
-    "pages/context/U1/S2/exercise/result",
-    "pages/context/U1/S3/word/recog",
-    "pages/context/U1/S3/word/result",
-    "pages/context/U1/S3/exercise/recog",
-    "pages/context/U1/S3/exercise/result",
-    "pages/context/U1/S4/word/recog",
-    "pages/context/U1/S4/word/result",
-    "pages/context/U1/S4/exercise/recog",
-    "pages/context/U1/S4/exercise/result",
-    "pages/context/U1/UR/word/recog",
-    "pages/context/U1/UR/word/result",
-    "pages/context/U1/UR/exercise/recog",
-    "pages/context/U1/UR/exercise/result"
+    "pages/context/select/select",
+    "pages/context/exercise/recog",
+    "pages/context/exercise/result",
+    "pages/context/word/recog",
+    "pages/context/word/result"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,5 +18,6 @@
     "navigationBarTitleText": "华工日协学习助手",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#fac"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
