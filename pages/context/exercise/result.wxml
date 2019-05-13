@@ -10,7 +10,7 @@
     <button class='folder' bindtap='unfold'>点击查看错误题目{{foldState?"▷":"▽"}}</button>
       <scroll-view  hidden='{{foldState}}' scroll-y='true' style='height: {{totalNumber - correctNumber >= 8 ? 8 * 45 : (totalNumber - correctNumber) * 45}}px'>
         <block wx:for='{{wrongExercise}}' wx:for-item='i' wx:key='' >
-          <view class='wrongExercises'>习题 {{index}}</view>
+          <text class='wrongExercises'>{{i.question}}</text> 
         </block>
       </scroll-view>
   </view>

@@ -3,6 +3,13 @@ var getOptions = function(array, ap, str) {
   //console.log("调用getOptions()成功,返回值为", array[ap[str]]);
   return array[ap[str]];
 }
+
+var currentNumberObserver = function (e, ins) {
+  var instance = ins.selectComponent('.bi'); // 返回组件的实例
+  instance.addClass("animated fadeIn");
+  //console.log('currentNumber observer', newValue, oldValue)
+}
 module.exports = {
   getOptions: getOptions,
+  currentNumberObserver: currentNumberObserver,
 };

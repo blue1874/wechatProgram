@@ -1,25 +1,31 @@
 <!--pages/context/theFirstUnit/theFirstSection.wxml-->
+<wxs src="function.wxs" module="function"></wxs>
 <view class='topTabSwiper'>
     <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' id="word"  data-current = "0" bindtap='checkCurrent'>单词</view>
     <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' id="exercise" data-current = "1" bindtap='checkCurrent'>练习</view>
 </view>
 <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
   <swiper-item>
-  <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true">
-    <block wx:for="{{words}}" wx:for-item="i" wx:key="">
-      <button class='words {{chosenWord[index] == 1 ? "highlight" : ""}}' bindtap='wordChosen' data-index = "{{index}}">{{i.word}}  {{i.property}} {{i.meaning}}</button> 
-    </block>
+  <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true"  class="animated fadeIn">
+  <view wx:for="{{wordSections}}" wx:for-item="k" wx:key="">
+      <button bindtap="fold" data-index="{{index}}">{{k.wordTitle}} {{function.getLength(k.section, words)}}个单词</button> 
+      <!-- <button bindtap="partedChosen" data-index="k.section" class=""></button> -->
+      <view wx:if="{{foldState[index]}}">
+        <view wx:for="{{function.getDepartedArrays(words, k.section)}}" wx:for-item="i" wx:key=""  class="animated slideInDown">
+          <button class='words {{chosenWord[function.getIndex(index, k.section, wordSections, words)] ? "highlight" : ""}}' bindtap='wordChosen' data-index = "{{function.getIndex(index, k.section, wordSections, words)}}">{{i.word}}  {{i.property}} {{i.meaning}}</button> 
+      </view>
+      </view> 
+  </view>
     <view class = "center-item_bottom">
       <button class='short' bindtap='wordAllChosen'>全选</button>
-      <button class='short' bindtap='wordUnChosen'>反选</button>
+      <!-- <button class='short' bindtap='wordUnChosen'>反选</button> -->
       <button class='short' bindtap='wordInput' disabled='{{!state}}'>提交</button>
     </view>
   </scroll-view>
   </swiper-item>
   <swiper-item>
-    <view class = "center-item">
-        <text>本章节共有{{exercises.length}}道测试题</text>
-        <button class='long' bindtap='testBegin'>开始测试</button>
+    <view wx:for="{{exerciseSections}}" wx:for-item="k" wx:key="">
+      <button bindtap="navigateToExercises" data-chosenExercises="{{function.getDepartedArrays(exercises, k.section)}}">{{k.exerciseTitle}} {{function.getLength(k.section, exercises)}}道题目</button>
     </view>
   </swiper-item>
 </swiper>

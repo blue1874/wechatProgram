@@ -78,7 +78,7 @@ button{
 
 view.options {
   width: 100%;
-  margin: 0;
+  margin: 5px; 
 }
 
 button.options {
@@ -87,9 +87,12 @@ button.options {
   text-align: left;
   font-size: 40rpx;
   font-family: monospace;
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 4px;
+  margin-right: 4px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   box-shadow: 4px 1px #cccccc;
   color: rgba(221, 13, 96, 0.733);
 }

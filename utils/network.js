@@ -27,6 +27,7 @@ function request(requestHandler) {
     },
     fail: function () {
       wx.hideLoading();
+      //wx.
       requestHandler.fail();
     },
     complete: function () {

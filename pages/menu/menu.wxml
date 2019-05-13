@@ -1,26 +1,32 @@
 <!--pages/menu/menu.wxml-->
-<view class = 'section'>
+<view class = 'animated section bounceIn'>
   <view class = "function big" bindtap = "gotoKanaLearn">假名自测</view>
-  <view class = "function big" bindtap = "setActive" data-id = '0'>第一单元（1-4课）</view>
-    <view wx:if="{{active[0]}}" class="box">
+
+    <view class = "function big" bindtap = "setActive" data-id = '0'>第一单元（1-4课）</view>
+    <view wx:if="{{active[0]}}" class="box animated slideInDown">
       <view class = "function small " bindtap = 'gotoSelect' data-index='1'>第一课</view>
-        <view class = "function small " bindtap = 'gotoSelect' data-index='2'>第二课</view>
-        <view class = "function small " bindtap = 'gotoSelect' data-index='3'>第三课</view>
-        <view class = "function small " bindtap = 'gotoSelect' data-index='4'>第四课</view>
-        <view class = "function small" bindtap = 'gotoSelect' data-index='4.5'>单元总结</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='2'>第二课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='3'>第三课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='4'>第四课</view>
+      <view class = "function small" bindtap = 'gotoSelect' data-index='4.5'>单元总结</view>
     </view>
-    
-  <view class = 'function big grey' bindtap = "disable" data-id = '1'>第二单元（5-8课）</view>
- <!--  <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
-    content
-  </view> -->
-  <view class = 'function big grey' bindtap = "disable" data-id = '2'>第三单元（9-12课）</view>
-  <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
-    content
-  </view> -->
-  <view class = 'function big' bindtap = "back">返回</view>
-  <!-- <view class = 'follow {active ? display : nondisplay}' bindtap = 'gotoFirstSection'>
-    content
-  </view> -->
+
+    <view class = "function big" bindtap = "setActive" data-id = '1'>第二单元（5-8课）</view>
+    <view wx:if="{{active[1]}}" class="box animated slideInDown">
+      <view class = "function small " bindtap = 'gotoSelect' data-index='5'>第五课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='6'>第六课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='7'>第七课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='8'>第八课</view>
+      <view class = "function small" bindtap = 'gotoSelect' data-index='8.5'>单元总结</view>
+    </view>
+
+    <view class = "function big" bindtap = "setActive" data-id = '2'>第三单元（9-12课）</view>
+    <view wx:if="{{active[2]}}" class="box animated slideInDown">
+      <view class = "function small " bindtap = 'gotoSelect' data-index='9'>第九课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='10'>第十课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='11'>第十一课</view>
+      <view class = "function small " bindtap = 'gotoSelect' data-index='12'>第十二课</view>
+      <view class = "function small" bindtap = 'gotoSelect' data-index='12.5'>单元总结</view>
+    </view>
 </view>
 

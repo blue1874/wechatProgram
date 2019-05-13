@@ -69,10 +69,10 @@ page {
 .center-item {
   height: 100%;
   display: flex;
-  text-align: center;
+  /* text-align: center; */
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   margin: 5px;
 }
 
@@ -81,6 +81,7 @@ button {
   background-color: rgba(127, 255, 212, 0.514);
   color: rgba(238, 47, 13, 0.459);
   box-shadow: 4px 1px 1px #cccccc;
+  margin-top: 5px;
 }
 
 ::-webkit-scrollbar {
@@ -90,7 +91,7 @@ button {
 }
 
 .short {
-  width: 30%;
+  width: 45%;
 }
 
 .long {

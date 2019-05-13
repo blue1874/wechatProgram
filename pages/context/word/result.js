@@ -12,6 +12,7 @@ Page({
     percentage: 0,
     wrongFlag: true,
     foldState: true,
+    section: '',
   },
   //my function
   //返回主菜单
@@ -26,19 +27,20 @@ Page({
     const that = this;
     if (e.target.dataset.mode == 1) {
       wx.redirectTo({
-        url: '../word/recog?chosenWord=' + JSON.stringify(that.data.wrongWord),
+        url: '../word/recog?chosenWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
       })
     }
     else{
       wx.redirectTo({
-        url: '../word/recog?chosenWord=' + JSON.stringify(that.data.chosenWord),
+        url: '../word/recog?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&section=' + that.data.section,
       })
     }
   },
   //重新选择
   gotoSelect: function () {
+    const that = this;
     wx.redirectTo({
-      url: '../S1',
+      url: '../select/select?section=' + that.data.section,
     })
   },
   //折叠显示
@@ -55,6 +57,8 @@ Page({
     const that = this;
     that.data.wrongWord = JSON.parse(options.wrongWord);
     that.data.chosenWord = JSON.parse(options.chosenWord);
+    that.data.section = options.section;
+    console.log("section", options.section)
     var correctNumber = that.data.chosenWord.length - that.data.wrongWord.length;
     var totalNumber = that.data.chosenWord.length;
     var percentage = (parseInt(correctNumber * 10000 / totalNumber)) / 100;
@@ -68,6 +72,7 @@ Page({
       correctNumber: correctNumber,
       wrongWord: that.data.wrongWord,
       chosenWord: that.data.chosenWord,
+      section: that.data.section
       })
     if (that.data.wrongWord.length == 0) that.setData({ wrongFlag: false });
   },

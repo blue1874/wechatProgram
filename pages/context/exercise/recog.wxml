@@ -1,14 +1,11 @@
 <!--pages/context/U1/S1/word/recog.wxml-->
+<wxs src="recog.wxs" module="m1"></wxs>
 <view class='slogen' center>{{currentNumber}}/{{totalNumber}}</view>
-
-<view class='question'>
-<text decode='true'>{{exercises[currentNumber - 1].question}}</text>
-</view>
+<view class='question'> <text decode='true'>{{exercises[currentNumber - 1].question}}</text></view>
 <view class='bi'>
   <block>
       <view class="options" wx:for="{{exercises[currentNumber - 1].options}}" wx:for-item="i" wx:key="">
-        <wxs src="recog.wxs" module="m1"></wxs>
-          <button class="options {{m1.getOptions(chosenOptions, ap, index) ? 'highlight' : ''}} {{m1.getOptions(correctOp, ap, index) ? 'display_correct' : ''}}" bindtap='chosen' data-index = "{{index}}">
+          <button class="options {{m1.getOptions(chosenOptions, ap, index) ? 'animated pulse highlight' : ''}} {{m1.getOptions(correctOp, ap, index) ? 'animated flash display_correct' : ''}}" bindtap='chosen' data-index = "{{index}}">
           {{index}} {{i}}
           </button> 
       </view>
@@ -20,7 +17,7 @@
     <!-- <button bindtap='wrongComfirm'  class='function' >上一题</button> -->
     <button bindtap='wrongComfirm'  class='function' >下一题</button>
   </block>
-  <view><button  class='function' bindtap='gotoSelect'>返回选择界面</button></view>
+  <!-- <view><button  class='function' bindtap='gotoSelect'>返回选择界面</button></view> -->
 </view>
 
 

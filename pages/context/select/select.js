@@ -9,7 +9,10 @@ Page({
     exercises: [],
     currentData: 0,
     chosenWord: [],
-    state: 0,
+    state: false,
+    section: '',
+    wordSections: [],
+    foldState: [],
   },
 
   //获取当前滑块的index
@@ -17,6 +20,16 @@ Page({
     const that = this;
     that.setData({
       currentData: e.detail.current
+    })
+  },
+
+  fold: function (e) {
+    const that = this;
+    var i = e.target.dataset.index;
+    console.log("index", i)
+    that.data.foldState[i] = that.data.foldState[i] ? false : true;
+    that.setData({
+      foldState: that.data.foldState,
     })
   },
   //点击切换，滑块index赋值
@@ -36,9 +49,9 @@ Page({
   wordChosen: function(e) {
     const that = this;
     var i = e.target.dataset.index;
-    that.data.chosenWord[i] = that.data.chosenWord[i] == 0 ? 1 : 0;
+    that.data.chosenWord[i] = that.data.chosenWord[i] == false ? true : false;
     console.log("chosen word change to: ", that.data.chosenWord);
-    that.data.state = that.data.chosenWord.length > 0 ? 1 : 0;
+    that.data.state = that.data.chosenWord.length > false ? true : false;
     that.setData({
       chosenWord: that.data.chosenWord,
       state: that.data.state
@@ -47,39 +60,51 @@ Page({
 
   wordAllChosen: function(e) {
     const that = this;
-    for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = 1;
+    var haveUnchosen = false;
+    for (var i = 0; i < that.data.chosenWord.length; i++) if (!that.data.chosenWord[i]) haveUnchosen = true;
+    if (haveUnchosen) for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = true;
+    else for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = false;
     that.setData({
       chosenWord: that.data.chosenWord,
-      state: 1
+      state: true
     })
   },
 
-  wordUnChosen: function (e) {
-    const that = this;
-    for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = that.data.chosenWord[i] == 0 ? 1 : 0;
-    that.data.state = that.data.chosenWord.length > 0 ? 1 : 0;
-    that.setData({
-      chosenWord: that.data.chosenWord,
-      state: that.data.state
-    })
-  },
+  // wordUnChosen: function (e) {
+  //   const that = this;
+  //   for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = that.data.chosenWord[i] == false ? true : false;
+  //   that.data.state = that.data.chosenWord.length > false ? true : false;
+  //   that.setData({
+  //     chosenWord: that.data.chosenWord,
+  //     state: that.data.state
+  //   })
+  // },
 
   //传递选中单词进入练习页面
   wordInput: function(e) {
     const that = this;
     var temp = [];
-    for(var i = 0; i < that.data.words.length; i++) if(that.data.chosenWord[i] == 1) temp.push(that.data.words[i]);
+    for(var i = 0; i < that.data.words.length; i++) if(that.data.chosenWord[i] == true) temp.push(that.data.words[i]);
     console.log("temp: ", temp)
     wx.navigateTo({
-      url: '../word/recog?chosenWord=' + JSON.stringify(temp),
+      url: '../word/recog?chosenWord=' + JSON.stringify(temp) + '&section=' + that.data.section,
     })
   },
 
-  testBegin: function()
-  {
+  navigateToExercises: function (e) {
+    const that = this;
+    //console.log("e ", e)
+    //绝了，wxml传递数据参数名称自动变小写...
+    //console.log("chosenExercises ", e.target.dataset.chosenexercises)
+    var chosenExercises = e.target.dataset.chosenexercises;
+    wx.navigateTo({
+      url: '../exercise/recog?exercises=' + JSON.stringify(chosenExercises) + '&section=' + that.data.section,
+    })
+  },
+  testBegin: function(){
     const that = this;
     wx.navigateTo({
-      url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises),
+      url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section,
     })
   },
   /**
@@ -87,8 +112,9 @@ Page({
    */
   onLoad: function (options) {
     const that = this;
-    var unit = options.unit;
+    //var unit = options.unit;
     var section = options.section;
+    console.log("section", section);
     //初始化页面数据
     var network = require("../../../utils/network.js")
     network.request({
@@ -102,11 +128,16 @@ Page({
       //request函数为异步执行，为保证同步执行，需将操作放入success回调函数
       success(res) {
         //初始化时所有选项均为未选中状态
-        for (var i = 0; i < res.data.words.length; i++)  that.data.chosenWord.push(0); 
+        for (var i = 0; i < res.data.words.length; i++)  that.data.chosenWord.push(false); 
+        for(var i = 0; i < res.data.wordSections.length; i++) that.data.foldState.push(false);
         that.setData({
           words: res.data.words,
           exercises: res.data.exercises,
-          chosenWord: that.data.chosenWord
+          chosenWord: that.data.chosenWord,
+          wordSections: res.data.wordSections,
+          exerciseSections: res.data.exerciseSections,
+          foldState: that.data.foldState,
+          section: section
         })
         console.log("返回words组",that.data.words);
         console.log("返回exercises组",that.data.exercises);

@@ -1,7 +1,6 @@
 // pages/context/U1/S1/exercise/result.js
 const app = getApp();
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -14,6 +13,7 @@ Page({
     correctNumber: 0,
     totalNumber: 0,
     percentage: 0,
+    section: '',
   },
   //my function
   //返回主菜单
@@ -27,12 +27,12 @@ Page({
     const that = this;
     if (e.target.dataset.mode == 1) {
       wx.redirectTo({
-        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.wrongExercise),
+        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.wrongExercise) + '&section=' + that.data.section,
       })
     }
     else{
       wx.redirectTo({
-        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises),
+        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section,
       })
     }
   },
@@ -50,6 +50,7 @@ Page({
     const that = this;
     that.data.exercises = JSON.parse(options.exercises);
     that.data.wrongExercise = JSON.parse(options.wrongExercise);
+    that.data.section = options.section;
     that.data.correctNumber = that.data.exercises.length - that.data.wrongExercise.length;
     that.data.totalNumber = that.data.exercises.length;
     that.data.percentage = (parseInt(that.data.correctNumber * 10000 / that.data.totalNumber)) / 100;
@@ -60,7 +61,8 @@ Page({
       totalNumber: that.data.totalNumber, 
       percentage: that.data.percentage,
       exercises: that.data.exercises,
-      wrongExercise: that.data.wrongExercise
+      wrongExercise: that.data.wrongExercise,
+      section: that.data.section,
       })
     if (that.data.wrongExercise.length == 0) that.setData({ wrongFlag: false });
   },

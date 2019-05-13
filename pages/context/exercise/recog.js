@@ -43,13 +43,15 @@ Page({
     chosenOptions: [],
     correctOp: [],
     maxOptionLength: 10,
+    section: ''
   },
 
   //my function
   //返回选择界面
   gotoSelect: function () {
+    const that = this;
     wx.navigateTo({
-      url: '../select/select',
+      url: '../select/select?section=' + that.data.section,
     })
   },
 
@@ -149,7 +151,7 @@ Page({
       }
     if (that.data.currentNumber > that.data.totalNumber) {
       wx.redirectTo({
-        url: '../exercise/result?exercises=' + JSON.stringify(that.data.exercises) + '&wrongExercise=' + JSON.stringify(that.data.wrongExercise),
+        url: '../exercise/result?exercises=' + JSON.stringify(that.data.exercises) + '&wrongExercise=' + JSON.stringify(that.data.wrongExercise) + '&section=' + that.data.section,
       })
     }
   },
@@ -165,7 +167,7 @@ Page({
       })
     if (that.data.currentNumber > that.data.totalNumber) {
       wx.redirectTo({
-        url: '../exercise/result?exercises=' + JSON.stringify(that.data.exercises) + '&wrongExercise=' + JSON.stringify(that.data.wrongExercise),
+        url: '../exercise/result?exercises=' + JSON.stringify(that.data.exercises) + '&wrongExercise=' + JSON.stringify(that.data.wrongExercise) + '&section=' + that.data.section,
       })
     }
   },
@@ -176,6 +178,7 @@ Page({
   onLoad: function (options) {
     const that = this;
     that.data.exercises = JSON.parse(options.exercises);
+    that.data.section = options.section;
     that.init();
     that.data.currentNumber = 1;
     that.data.totalNumber = that.data.exercises.length;
@@ -183,6 +186,7 @@ Page({
       exercises: that.data.exercises,
       currentNumber: that.data.currentNumber,
       totalNumber: that.data.totalNumber,
+      section: that.data.section,
       });
   },
 

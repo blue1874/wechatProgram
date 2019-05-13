@@ -20,9 +20,14 @@ Page({
   {
     const that = this;
     var id = e.target.dataset.id;
-    that.data.active[id] = (that.data.active[id] + 1) % 2;
+    var active = that.data.active;
+    for(var i = 0; i < active.length; i++)
+    {
+      if(i == id) active[i] = active[i] ? false : true;
+      else active[i] = false; 
+    }
     that.setData({
-      active: that.data.active
+      active: active
     })
   },
 

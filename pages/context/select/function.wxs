@@ -1,0 +1,43 @@
+var getDepartedArrays = function (arrays, section) {
+  var departedArrays =[];
+  //console.log("section:", section)
+  for(var i = 0; i < arrays.length; i++)
+  {
+    if (arrays[i].section == section) 
+      departedArrays.push(arrays[i]);
+  }
+  //console.log("departedArrays ",departedArrays)
+  return departedArrays;
+}
+
+var getLength = function (section, arrays) {
+  var len = 0;
+  //console.log("section:", section)
+  for (var i = 0; i < arrays.length; i++) {
+    if (arrays[i].section == section)
+      len++;
+  }
+
+  return len;
+}
+var getIndex = function (index, section, wordSections, arrays) {
+  var len = Math.round((section - wordSections[0].section) * 10);
+  var cnt = index;
+  //console.log("index ", index)
+  //console.log("section ", (section - wordSections[0].section) * 10)
+  //console.log("len ", len)
+  if(len == 0) return cnt;
+  else {
+    while(len > 0) {
+      len--;
+      cnt += getLength(wordSections[len].section, arrays);
+    }
+    //console.log("cnt", cnt)
+    return cnt;
+  }
+}
+module.exports = {
+  getDepartedArrays: getDepartedArrays,
+  getIndex: getIndex,
+  getLength: getLength,
+};

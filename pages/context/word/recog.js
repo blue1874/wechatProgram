@@ -9,14 +9,16 @@ Page({
     inputValue: '',
     currentNumber: 1,
     totalNumber: 1,
+    section: '',
     words: [],
   },
 
   //my function
   //返回选择界面
   gotoSelect: function () {
+    const that = this;
     wx.navigateTo({
-      url: '../S1',
+      url: '../select/select?section=' + that.data.section,
     })
   },
 
@@ -45,7 +47,8 @@ Page({
           icon: 'success',
           duration: 1000
         })
-        that.setData({ currentNumber: that.data.currentNumber + 1 })
+        that.data.inputValue = "";
+        that.setData({ inputValue: that.data.inputValue, currentNumber: that.data.currentNumber + 1})
       }
       else {
         that.data.wrongWord = that.data.wrongWord.concat(that.data.words[that.data.currentNumber - 1])
@@ -57,7 +60,7 @@ Page({
       }
       if (that.data.currentNumber > that.data.totalNumber) {
         wx.redirectTo({
-          url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord),
+          url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
         })
       }
     }
@@ -66,10 +69,10 @@ Page({
   },
   wrongComfirm: function () {
     const that = this;
-    that.setData({ wrongFlag: false, currentNumber: (that.data.currentNumber + 1)})
+    that.setData({ wrongFlag: false, currentNumber: (that.data.currentNumber + 1), inputValue: '' })
     if (that.data.currentNumber > that.data.totalNumber) {
       wx.redirectTo({
-        url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord),
+        url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
       })
     }
   },
@@ -81,6 +84,8 @@ Page({
     //options应有参数 chosenWord 表示应在recog页面显示的所有单词
     const that = this;
     that.data.chosenWord = JSON.parse(options.chosenWord);
+    that.data.section = options.section;
+    console.log("section", options.section)
     console.log('洗牌前顺序：', that.data.chosenWord)
     that.data.wrongWord = [];
     var changeOrder = that.data.chosenWord;
@@ -95,7 +100,10 @@ Page({
       }
     }
     that.setData({ totalNumber: that.data.chosenWord.length})
-    that.setData({ words: changeOrder })
+    that.setData({ 
+      words: changeOrder, 
+      section : that.data.section
+      })
 
     console.log('洗牌后顺序：', that.data.words, '总数', that.data.totalNumber)
   },

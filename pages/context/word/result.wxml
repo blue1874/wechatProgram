@@ -10,7 +10,7 @@
     <button class='folder' bindtap='unfold'>点击查看错误单词{{foldState?"▷":"▽"}}</button>
       <scroll-view  hidden='{{foldState}}' scroll-y='true' style='height: {{totalNumber - correctNumber >= 8 ? 8 * 45 : (totalNumber - correctNumber) * 45}}px'>
           <block wx:for='{{wrongWord}}' wx:for-item='i' wx:key=''>
-            <view class='words'>{{i.word}}  ({{i.property}}) {{i.meaning}}</view> 
+            <view class='words'>{{i.word}}  {{i.property}} {{i.meaning}}</view> 
           </block>
       </scroll-view>
   </view>

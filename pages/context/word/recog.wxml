@@ -8,7 +8,7 @@
   <block wx:if="{{!wrongFlag}}">
     <form bindsubmit='formSubmit'>
       <view class='inputBlank'>
-        <input  bindinput='getKana' type='text'  bindconfirm='formSubmit' placeholder="读音" confirm-hold= 'true' value="{{clear}}"  focus='true' confirm-type='done'/>
+        <input  bindinput='getKana' type='text'  bindconfirm='formSubmit' placeholder="读音" confirm-hold= 'true' value="{{inputValue}}"  focus='true' confirm-type='done'/>
 </view>
 <button form-type='submit'  class='function' >提交</button>
 </form>
