@@ -23,7 +23,6 @@ page {
   margin: 4px;
   color:#fff ;
   background-color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
   flex-direction: column;
 }
 

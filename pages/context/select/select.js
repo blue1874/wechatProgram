@@ -13,6 +13,8 @@ Page({
     section: '',
     wordSections: [],
     foldState: [],
+    wordTitle: '',
+    exerciseTitle: '',
   },
 
   //获取当前滑块的index
@@ -58,6 +60,20 @@ Page({
     })
   },
 
+  partedChosen: function(e) {
+    const that = this;
+    console.log(e)
+    var haveUnchosen = false;
+    var departedIndexArrays = e.target.dataset.departedindexarrays;
+    for (var i = 0; i < departedIndexArrays.length; i++) if (!that.data.chosenWord[departedIndexArrays[i]]) haveUnchosen = true;
+    if (haveUnchosen) for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = true;
+    else for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = false;
+    that.setData({
+      chosenWord: that.data.chosenWord,
+      state: true
+    })
+  },
+
   wordAllChosen: function(e) {
     const that = this;
     var haveUnchosen = false;
@@ -96,17 +112,18 @@ Page({
     //console.log("e ", e)
     //绝了，wxml传递数据参数名称自动变小写...
     //console.log("chosenExercises ", e.target.dataset.chosenexercises)
+    var exerciseTitle = e.target.dataset.exercisetitle;
     var chosenExercises = e.target.dataset.chosenexercises;
     wx.navigateTo({
-      url: '../exercise/recog?exercises=' + JSON.stringify(chosenExercises) + '&section=' + that.data.section,
+      url: '../exercise/recog?exercises=' + JSON.stringify(chosenExercises) + '&section=' + that.data.section + '&exerciseTitle=' + exerciseTitle,
     })
   },
-  testBegin: function(){
-    const that = this;
-    wx.navigateTo({
-      url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section,
-    })
-  },
+  // testBegin: function(){
+  //   const that = this;
+  //   wx.navigateTo({
+  //     url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section,
+  //   })
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -127,7 +144,7 @@ Page({
       },
       //request函数为异步执行，为保证同步执行，需将操作放入success回调函数
       success(res) {
-        //初始化时所有选项均为未选中状态
+        //初始化时所有单词均为未选中状态
         for (var i = 0; i < res.data.words.length; i++)  that.data.chosenWord.push(false); 
         for(var i = 0; i < res.data.wordSections.length; i++) that.data.foldState.push(false);
         that.setData({
@@ -137,7 +154,7 @@ Page({
           wordSections: res.data.wordSections,
           exerciseSections: res.data.exerciseSections,
           foldState: that.data.foldState,
-          section: section
+          section: section,
         })
         console.log("返回words组",that.data.words);
         console.log("返回exercises组",that.data.exercises);

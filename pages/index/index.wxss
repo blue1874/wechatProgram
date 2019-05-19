@@ -16,6 +16,15 @@
   color: #aaa;
 }
 
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} 
 .usermotto {
   margin-top: 150px;
 }
@@ -26,5 +35,8 @@ button{
   border-width:2rpx; 
  color:#fff ;
  background-color: #fac;
- box-shadow: 4px 1px 1px #cccccc;
+}
+
+button::after{
+  border: none;
 }

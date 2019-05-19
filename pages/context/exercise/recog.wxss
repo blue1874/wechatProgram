@@ -1,18 +1,16 @@
-/* pages/context/U1/S1/exercise/recog.wxss */
-/* pages/context/U1/S1/word/recog.wxss */
-/* pages/kanaLearn/kanaRecog.wxss */
 page {
   height: 100%;
 }
 
 .slogen{
-justify-content: center; 
-align-items: center;
-text-align: center;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
 color: #fac;
+margin-left: 3%;
+margin-right: 3%;
 }
-
-.bi{
+.exercises{
 justify-content: center; 
 display: flex;
 align-items: center;
@@ -22,7 +20,12 @@ margin-top: 10%;
 margin-bottom: 5%;
 }
 
-
+.container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* 高亮显示正确答案 */
 .display_correct { 
   background-color: rgba(10, 221, 10, 0.671);
@@ -44,36 +47,38 @@ margin-bottom: 5%;
   margin-bottom: 5%;
 }
 
+
 button{
+  background-color: #fff;
   margin-top:80rpx; 
-  border-style: solid;
-  border-width:2rpx; 
+  border:none;
   color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
 }
 
+button::after {
+  border: none;
+}
 .function{
-  margin-top: 80rpx;
+  margin-top: 10%;
   width:300rpx;
   text-align: center;
   color:#fff ;
   background-color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
 }
 
 .question {
   display: flex;
-  height: 20%;
+  width: 90%;
+  height: 200rpx;
   align-items: center;
   text-align: left;
-  border-radius: 5px;
+  border-radius: 7%;
   margin-top: 5%;
   margin-bottom: 5%;
   font-size: 40rpx;
   color: rgba(247, 19, 110, 0.61);
   background-color: rgba(127, 255, 212, 0.199);
   font-family: monospace;
-  box-shadow: 4px 1px #cccccc;
 }
 
 view.options {
@@ -82,18 +87,17 @@ view.options {
 }
 
 button.options {
-  width: 100%;
+  width: 90%;
   height: 7%;
   text-align: left;
   font-size: 40rpx;
   font-family: monospace;
   margin-top: 0;
   margin-bottom: 0;
-  margin-left: 4px;
-  margin-right: 4px;
+  margin-left: 5%;
+  margin-right: 5%;
   border: none;
   border-radius: 8px;
-  box-shadow: 4px 1px #cccccc;
   color: rgba(221, 13, 96, 0.733);
 }
 

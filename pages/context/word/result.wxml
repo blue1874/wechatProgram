@@ -16,11 +16,11 @@
   </view>
 </block>
 
-<button bindtap='gotoRecog' data-mode='{{0}}'>再来一次</button>
+<!-- <button bindtap='gotoRecog' data-mode='{{0}}'>再来一次</button> -->
 <block wx:if="{{wrongFlag}}">
   <button bindtap='gotoRecog' data-mode='{{1}}'>错误再刷</button>
 </block>
-<button bindtap='gotoSelect'>重新选择</button>
+<!-- <button bindtap='gotoSelect'>重新选择</button> -->
 <button bindtap='gotoMenu' >返回主菜单</button>
 
 </view>

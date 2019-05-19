@@ -1,15 +1,25 @@
-var getOptions = function(array, ap, str) {
+function getOptions(array, ap, str, index) {
   // console.log(str)
   //console.log("调用getOptions()成功,返回值为", array[ap[str]]);
-  return array[ap[str]];
+  //console.log(array[index][ap[str]])
+  return array[index][ap[str]];
 }
 
-var currentNumberObserver = function (e, ins) {
-  var instance = ins.selectComponent('.bi'); // 返回组件的实例
-  instance.addClass("animated fadeIn");
-  //console.log('currentNumber observer', newValue, oldValue)
+// function currentNumberObserver(e, ins) {
+//   var instance = ins.selectComponent('.bi'); // 返回组件的实例
+//   instance.addClass("animated fadeIn");
+//   //console.log('currentNumber observer', newValue, oldValue)
+// }
+// 
+
+function getOrders(totalNumber) {
+  var temp = [];
+  for(var i = 1; i < totalNumber; i++) temp.push(i);
+  return temp;
 }
+
 module.exports = {
   getOptions: getOptions,
-  currentNumberObserver: currentNumberObserver,
+  //currentNumberObserver: currentNumberObserver,
+  getOrders: getOrders,
 };

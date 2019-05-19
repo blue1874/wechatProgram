@@ -1,4 +1,4 @@
-var getDepartedArrays = function (arrays, section) {
+function getDepartedArrays(arrays, section) {
   var departedArrays =[];
   //console.log("section:", section)
   for(var i = 0; i < arrays.length; i++)
@@ -10,7 +10,7 @@ var getDepartedArrays = function (arrays, section) {
   return departedArrays;
 }
 
-var getLength = function (section, arrays) {
+function getLength(section, arrays) {
   var len = 0;
   //console.log("section:", section)
   for (var i = 0; i < arrays.length; i++) {
@@ -20,7 +20,7 @@ var getLength = function (section, arrays) {
 
   return len;
 }
-var getIndex = function (index, section, wordSections, arrays) {
+function getIndex(index, section, wordSections, arrays) {
   var len = Math.round((section - wordSections[0].section) * 10);
   var cnt = index;
   //console.log("index ", index)
@@ -36,8 +36,18 @@ var getIndex = function (index, section, wordSections, arrays) {
     return cnt;
   }
 }
+function getDepartedIndexArrays(arrays, section, wordSections) {
+  var departedArrays = getDepartedArrays(arrays, section);
+  var indexArrays = [];
+  for(var i = 0; i < departedArrays.length; i++)
+  {
+    indexArrays.push(getIndex(i, section, wordSections, arrays));
+  }
+  return indexArrays;
+}
 module.exports = {
   getDepartedArrays: getDepartedArrays,
   getIndex: getIndex,
   getLength: getLength,
+  getDepartedIndexArrays: getDepartedIndexArrays,
 };

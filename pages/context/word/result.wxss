@@ -1,12 +1,12 @@
 /* pages/context/U1/S1/word/result.wxss */
 button{
-  margin-top:5% ;
-  margin-bottom:5% ;
+  background-color: #fff;
   width: 300rpx;
-    border-style: solid;
-  border-width:2rpx; 
+  margin-top:80rpx; 
   color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
+}
+button::after{
+  border: noen;
 }
 .bigBox{
   height: 100%;

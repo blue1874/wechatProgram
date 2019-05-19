@@ -43,7 +43,7 @@
 					"id": 0,
 					"name": "select 页面",
 					"pathName": "pages/context/select/select",
-					"query": "section=4.5",
+					"query": "section=5",
 					"scene": null
 				},
 				{

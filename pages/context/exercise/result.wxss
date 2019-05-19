@@ -1,12 +1,13 @@
 /* pages/context/U1/S1/exercise/result.wxss */
 button{
+  background-color: #fff;
   margin-top:5% ;
   margin-bottom:5% ;
   width: 300rpx;
-    border-style: solid;
-  border-width:2rpx; 
   color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
+}
+button::after {
+  border: none;
 }
 .bigBox{
   height: 100%;

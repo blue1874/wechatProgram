@@ -58,14 +58,14 @@ input{
 }
 
 button{
+  background-color: #fff;
   width: 300rpx;
   margin-top:80rpx; 
-  border-style: solid;
-  border-width:2rpx; 
   color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
 }
-
+button::after{
+  border: noen;
+}
 .function{
   margin-top: 80rpx;
   width:300rpx;
@@ -74,5 +74,4 @@ button{
   text-align: center;
   color:#fff ;
   background-color: #fac;
-  box-shadow: 4px 1px 1px #cccccc;
 }    

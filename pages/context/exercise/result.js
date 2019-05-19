@@ -14,6 +14,7 @@ Page({
     totalNumber: 0,
     percentage: 0,
     section: '',
+    exerciseTitle: '',
   },
   //my function
   //返回主菜单
@@ -27,12 +28,12 @@ Page({
     const that = this;
     if (e.target.dataset.mode == 1) {
       wx.redirectTo({
-        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.wrongExercise) + '&section=' + that.data.section,
+        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.wrongExercise) + '&section=' + that.data.section + '&exerciseTitle=' + that.data.exerciseTitle,
       })
     }
     else{
       wx.redirectTo({
-        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section,
+        url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section + '&exerciseTitle=' + that.data.exerciseTitle,
       })
     }
   },

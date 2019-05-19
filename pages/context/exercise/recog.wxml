@@ -1,23 +1,24 @@
 <!--pages/context/U1/S1/word/recog.wxml-->
 <wxs src="recog.wxs" module="m1"></wxs>
-<view class='slogen' center>{{currentNumber}}/{{totalNumber}}</view>
-<view class='question'> <text decode='true'>{{exercises[currentNumber - 1].question}}</text></view>
-<view class='bi'>
-  <block>
-      <view class="options" wx:for="{{exercises[currentNumber - 1].options}}" wx:for-item="i" wx:key="">
-          <button class="options {{m1.getOptions(chosenOptions, ap, index) ? 'animated pulse highlight' : ''}} {{m1.getOptions(correctOp, ap, index) ? 'animated flash display_correct' : ''}}" bindtap='chosen' data-index = "{{index}}">
-          {{index}} {{i}}
-          </button> 
-      </view>
-  </block>
-  <block wx:if="{{!hasInput}}">
-    <button disabled = '{{!hasChosen}}' bindtap='input'  class='function' >提交</button>
-  </block>
-  <block  class="float_left" wx:if="{{hasInput}}">
-    <!-- <button bindtap='wrongComfirm'  class='function' >上一题</button> -->
-    <button bindtap='wrongComfirm'  class='function' >下一题</button>
-  </block>
-  <!-- <view><button  class='function' bindtap='gotoSelect'>返回选择界面</button></view> -->
+<view class="slogen">
+  <view id='left'>{{exerciseTitle}}</view>
+  <view id='right'>{{page}}/{{totalNumber}}</view>
 </view>
-
-
+<view wx:for="{{exercises}}" wx:for-item = "k" wx:key="" wx:if="{{page - 1 == index}}">
+  <view class='container {{currentAnimation}}'  bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd">
+    <view class='question'> <text decode='true'>{{k.question}}</text></view>
+        <block class='exercises'>
+          <view class="options" wx:for="{{k.options}}" wx:for-item="i" wx:key="">
+            <button class="options {{m1.getOptions(chosenOptions, ap, index, page) ? 'animated pulse highlight' : ''}} {{m1.getOptions(correctOps, ap, index, page) ? 'animated flash display_correct' : ''}}" bindtap='chosen' data-index = "{{index}}">{{index}} {{i}}
+            </button> 
+          </view>
+        </block>
+      <block wx:if="{{!hasInput && (page == currentNumber)}}">
+        <button disabled = '{{!hasChosen}}' bindtap='input'  class='function' >提交</button>
+      </block>
+      <block  class="float_left" wx:if="{{hasInput && (page == currentNumber)}}">
+        <button bindtap='wrongComfirm'  class='function' >下一题</button>
+      </block>
+  <!-- <view><button  class='function' bindtap='gotoSelect'>返回选择界面</button></view> -->
+  </view>
+</view>

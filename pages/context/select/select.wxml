@@ -8,8 +8,10 @@
   <swiper-item>
   <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true"  class="animated fadeIn">
   <view wx:for="{{wordSections}}" wx:for-item="k" wx:key="">
-      <button bindtap="fold" data-index="{{index}}">{{k.wordTitle}} {{function.getLength(k.section, words)}}个单词</button> 
-      <!-- <button bindtap="partedChosen" data-index="k.section" class=""></button> -->
+  <view class='word'>
+  <button class="folder" bindtap="fold" data-index="{{index}}">{{k.wordTitle}} {{function.getLength(k.section, words)}}个单词</button> 
+  <button class="select" bindtap="partedChosen" data-departedIndexArrays="{{function.getDepartedIndexArrays(words, k.section, wordSections)}}" class="">选择</button>
+      </view>
       <view wx:if="{{foldState[index]}}">
         <view wx:for="{{function.getDepartedArrays(words, k.section)}}" wx:for-item="i" wx:key=""  class="animated slideInDown">
           <button class='words {{chosenWord[function.getIndex(index, k.section, wordSections, words)] ? "highlight" : ""}}' bindtap='wordChosen' data-index = "{{function.getIndex(index, k.section, wordSections, words)}}">{{i.word}}  {{i.property}} {{i.meaning}}</button> 
@@ -25,7 +27,7 @@
   </swiper-item>
   <swiper-item>
     <view wx:for="{{exerciseSections}}" wx:for-item="k" wx:key="">
-      <button bindtap="navigateToExercises" data-chosenExercises="{{function.getDepartedArrays(exercises, k.section)}}">{{k.exerciseTitle}} {{function.getLength(k.section, exercises)}}道题目</button>
+      <button bindtap="navigateToExercises" data-chosenExercises="{{function.getDepartedArrays(exercises, k.section)}}" data-exerciseTitle="{{k.exerciseTitle}}">{{k.exerciseTitle}} {{function.getLength(k.section, exercises)}}道题目</button>
     </view>
   </swiper-item>
 </swiper>
