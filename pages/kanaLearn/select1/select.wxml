@@ -1,0 +1,43 @@
+<!--pages/kanaLearn/select1/select.wxml-->
+
+  <view class='topTabSwiper animated {{isMenuOpen ? "slideOutRightHalf" : "slideInLeftHalf"}}'>
+    <view bindtap='slideMenu'><text class = 'icon-menu-new icon'></text></view>
+    <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>清音</view>
+    <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>浊音</view>
+    <view class='tab  {{currentData == 2 ? "tabBorer" : ""}}' data-current="2" bindtap='checkCurrent'>拗音</view>
+  </view>
+  <swiper current="{{currentData}}" class='swiper animated {{isMenuOpen ? "slideOutRightHalf" : "slideInLeft"}}' duration="300" bindchange="bindchange">
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true">
+        <view class='kanaTable'>
+          <view class='kanas seions' wx:for="{{seions}}" wx:for-item="i" wx:key="">
+            <text class='kana'>{{type == 'hira' ? i.hiraName : i.kataName}}</text>
+            <text class='roma'>{{i.roma}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true">
+        <view class='kanaTable'>
+          <view class='kanas dakuons' wx:for="{{dakuons}}" wx:for-item="i" wx:key="">
+            <text class='kana'>{{type == 'hira' ? i.hiraName : i.kataName}}</text>
+            <text class='roma'>{{i.roma}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+    <swiper-item>
+      <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true">
+        <view class='kanaTable'>
+          <view class='kanas youons' wx:for="{{yonos}}" wx:for-item="i" wx:key="">
+            <text class='kana'>{{type == 'hira' ? i.hiraName : i.kataName}}</text>
+            <text class='roma'>{{i.roma}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <view bindtap='changeHiraKata' class="round-click">
+      <text class = 'hiraKata'>{{type == 'hira' ? "平" : "片"}}</text>
+  </view>
