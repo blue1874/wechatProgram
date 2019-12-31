@@ -1,19 +1,34 @@
 <!--index.wxml-->
-<view class="container">
+<!-- <view class="container">
   <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <button wx:if="{{!hasUserInfo && canIUse}}"  bindtap="gotoMenu"> 离线进入 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" bindtap="gotoMenu"> 离线进入 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
   <block wx:if="{{hasUserInfo && canIUse}}">
-  <view class="usermotto">
-    <text class="user-motto">ようこそ！{{userInfo.nickName}}さま</text> </view>
- 
-    <button  bindtap="gotoMenu" disabled='{{!hasUserInfo && canIUse}}'>进入学习小助手</button>
-    
+    <view class="usermotto">
+      <text class="user-motto">ようこそ！{{userInfo.nickName}}さま</text> </view>
+    <button bindtap="gotoMenu" disabled='{{!hasUserInfo && canIUse}}' class='weui-btn'>进入学习小助手</button>
   </block>
-
+</view> -->
+<view style="display:flex;flex-direction:column;text-align:center">
+  <text>选择你使用的教材</text>
 </view>
+<swiper current="{{currentData}}" class='swiper animated'  duration="300" indicator-dots="true" 
+ bindchange="bindchange">
+<swiper-item>
+    <view class="img-container">  
+      <image src="../../img/book.jpg" mode="aspectFit" bindtap="gotoMenu"></image>
+      <text>新标准日本语</text>
+    </view>
+</swiper-item>
+<swiper-item>
+  <view class="img-container">  
+    <image src="../../img/book.jpg" mode="aspectFit"></image>  
+    <text>尚未上线，敬请期待</text>
+  </view> 
+</swiper-item>
+</swiper>

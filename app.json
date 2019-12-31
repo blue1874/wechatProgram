@@ -10,7 +10,8 @@
     "pages/context/exercise/recog",
     "pages/context/exercise/result",
     "pages/context/word/recog",
-    "pages/context/word/result"
+    "pages/context/word/result",
+    "pages/kanaLearn/select1/select"
   ],
   "window": {
     "backgroundTextStyle": "light",

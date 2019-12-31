@@ -18,14 +18,15 @@ Page({
   },
 
   //获取当前滑块的index
-  bindchange: function (e) {
+  bindchange: function(e) {
     const that = this;
     that.setData({
       currentData: e.detail.current
     })
   },
 
-  fold: function (e) {
+  //控制section是否折叠
+  fold: function(e) {
     const that = this;
     var i = e.target.dataset.index;
     console.log("index", i)
@@ -34,13 +35,13 @@ Page({
       foldState: that.data.foldState,
     })
   },
+
   //点击切换，滑块index赋值
-  checkCurrent: function (e) {
+  checkCurrent: function(e) {
     const that = this;
     if (that.data.currentData == e.target.dataset.current) {
       return 0;
-    } 
-    else {
+    } else {
       that.setData({
         currentData: e.target.dataset.current
       })
@@ -60,14 +61,18 @@ Page({
     })
   },
 
+  //按section分组选择
   partedChosen: function(e) {
     const that = this;
     console.log(e)
     var haveUnchosen = false;
     var departedIndexArrays = e.target.dataset.departedindexarrays;
-    for (var i = 0; i < departedIndexArrays.length; i++) if (!that.data.chosenWord[departedIndexArrays[i]]) haveUnchosen = true;
-    if (haveUnchosen) for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = true;
-    else for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = false;
+    for (var i = 0; i < departedIndexArrays.length; i++)
+      if (!that.data.chosenWord[departedIndexArrays[i]]) haveUnchosen = true;
+    if (haveUnchosen)
+      for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = true;
+    else
+      for (var i = 0; i < departedIndexArrays.length; i++) that.data.chosenWord[departedIndexArrays[i]] = false;
     that.setData({
       chosenWord: that.data.chosenWord,
       state: true
@@ -77,9 +82,12 @@ Page({
   wordAllChosen: function(e) {
     const that = this;
     var haveUnchosen = false;
-    for (var i = 0; i < that.data.chosenWord.length; i++) if (!that.data.chosenWord[i]) haveUnchosen = true;
-    if (haveUnchosen) for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = true;
-    else for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = false;
+    for (var i = 0; i < that.data.chosenWord.length; i++)
+      if (!that.data.chosenWord[i]) haveUnchosen = true;
+    if (haveUnchosen)
+      for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = true;
+    else
+      for (var i = 0; i < that.data.chosenWord.length; i++) that.data.chosenWord[i] = false;
     that.setData({
       chosenWord: that.data.chosenWord,
       state: true
@@ -100,14 +108,15 @@ Page({
   wordInput: function(e) {
     const that = this;
     var temp = [];
-    for(var i = 0; i < that.data.words.length; i++) if(that.data.chosenWord[i] == true) temp.push(that.data.words[i]);
+    for (var i = 0; i < that.data.words.length; i++)
+      if (that.data.chosenWord[i] == true) temp.push(that.data.words[i]);
     console.log("temp: ", temp)
     wx.navigateTo({
       url: '../word/recog?chosenWord=' + JSON.stringify(temp) + '&section=' + that.data.section,
     })
   },
 
-  navigateToExercises: function (e) {
+  navigateToExercises: function(e) {
     const that = this;
     //console.log("e ", e)
     //绝了，wxml传递数据参数名称自动变小写...
@@ -127,26 +136,28 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     const that = this;
     //var unit = options.unit;
     var section = options.section;
     console.log("section", section);
-    //初始化页面数据
+    //初始化页面，向服务器请求数据
     var network = require("../../../utils/network.js")
     network.request({
-      url: 'https://www.ykkskl.top/dataInterface/data.jsp',
-      data:{
+      url: 'https://ykkskl.top/dataInterface/data.jsp',
+      //url: 'https://blue1874.github.io/wechat_program_data/data_section_05.md',
+      data: {
         section: section,
       },
-      header:{
+      header: {
         'content-type': 'application/json'
       },
       //request函数为异步执行，为保证同步执行，需将操作放入success回调函数
       success(res) {
         //初始化时所有单词均为未选中状态
-        for (var i = 0; i < res.data.words.length; i++)  that.data.chosenWord.push(false); 
-        for(var i = 0; i < res.data.wordSections.length; i++) that.data.foldState.push(false);
+        //使用数组存储选择以及折叠状态
+        for (var i = 0; i < res.data.words.length; i++) that.data.chosenWord.push(false);
+        for (var i = 0; i < res.data.wordSections.length; i++) that.data.foldState.push(false);
         that.setData({
           words: res.data.words,
           exercises: res.data.exercises,
@@ -156,8 +167,14 @@ Page({
           foldState: that.data.foldState,
           section: section,
         })
-        console.log("返回words组",that.data.words);
-        console.log("返回exercises组",that.data.exercises);
+        console.log("返回words组", that.data.words);
+        console.log("返回exercises组", that.data.exercises);
+      },
+      fail(res) {
+        wx.showToast({
+          title: '网络异常，请刷新重试',
+          icon: 'none'
+        })
       }
     });
   },
@@ -165,28 +182,28 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
     // if (getCurrentPages().length >= 1) {
     //   wx.navigateBack({
     //     delta: 1
@@ -197,21 +214,21 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

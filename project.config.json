@@ -4,16 +4,24 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"nodeModules": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.0.4",
 	"appid": "wx31f10e1fa2610b6c",
 	"projectname": "benkyouAssistant",
 	"isGameTourist": false,
@@ -36,8 +44,12 @@
 			"currentL": -1,
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
-			"current": 0,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -51,6 +63,27 @@
 					"name": "result_exercise 页面",
 					"pathName": "pages/context/select/select",
 					"query": "wrongExercises",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "kanaselect 页面",
+					"pathName": "pages/kanaLearn/select1/select",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/menu/menu",
+					"pathName": "pages/menu/menu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/context/exercise/recog",
+					"pathName": "pages/context/exercise/recog",
+					"query": "",
 					"scene": null
 				}
 			]

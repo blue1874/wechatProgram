@@ -16,44 +16,45 @@ Page({
   },
   //my function
   //返回主菜单
-  gotoMenu: function () {
+  gotoMenu: function() {
     const that = this;
     wx.redirectTo({
       url: '/pages/menu/menu',
     })
   },
   //再来一次（0为保持原选择数组进入识别界面，1为择错数组替换选择数组进入识别界面）
-  gotoRecog: function (e) {
+  gotoRecog: function(e) {
     const that = this;
     if (e.target.dataset.mode == 1) {
       wx.redirectTo({
         url: '../word/recog?chosenWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
       })
-    }
-    else{
+    } else {
       wx.redirectTo({
         url: '../word/recog?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&section=' + that.data.section,
       })
     }
   },
   //重新选择
-  gotoSelect: function () {
+  gotoSelect: function() {
     const that = this;
     wx.redirectTo({
       url: '../select/select?section=' + that.data.section,
     })
   },
   //折叠显示
-  unfold: function () {
+  unfold: function() {
     const that = this;
-    that.setData({ foldState: !that.data.foldState})
+    that.setData({
+      foldState: !that.data.foldState
+    })
     console.log('unfold triggered')
   },
   /**
    * 生命周期函数--监听页面加载
    */
   //接受正确个数并计算正确率
-  onLoad: function (options) {
+  onLoad: function(options) {
     const that = this;
     that.data.wrongWord = JSON.parse(options.wrongWord);
     that.data.chosenWord = JSON.parse(options.chosenWord);
@@ -66,63 +67,65 @@ Page({
     console.log('correctNumber：', correctNumber)
     console.log('正确率为：', correctNumber, '/', totalNumber)
     console.log('百分化后为：', percentage, '%')
-    that.setData({ 
-      totalNumber: totalNumber, 
-      percentage: percentage, 
+    that.setData({
+      totalNumber: totalNumber,
+      percentage: percentage,
       correctNumber: correctNumber,
       wrongWord: that.data.wrongWord,
       chosenWord: that.data.chosenWord,
       section: that.data.section
-      })
-    if (that.data.wrongWord.length == 0) that.setData({ wrongFlag: false });
+    })
+    if (that.data.wrongWord.length == 0) that.setData({
+      wrongFlag: false
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

@@ -15,7 +15,7 @@ Page({
 
   //my function
   //返回选择界面
-  gotoSelect: function () {
+  gotoSelect: function() {
     const that = this;
     wx.navigateTo({
       url: '../select/select?section=' + that.data.section,
@@ -23,13 +23,15 @@ Page({
   },
 
   //记录输入的值
-  getKana: function (e) {
+  getKana: function(e) {
     const that = this;
-    that.setData({ inputValue: e.detail.value })
+    that.setData({
+      inputValue: e.detail.value
+    })
   },
 
   //点击提交或小键盘的确定按钮事件
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     const that = this;
     console.log('输入的单词为：', that.data.inputValue)
     console.log('正确单词为：', that.data.words[that.data.currentNumber - 1].word)
@@ -39,8 +41,7 @@ Page({
         icon: 'loading',
         duration: 1000
       })
-    }
-    else {
+    } else {
       if ((that.data.inputValue == that.data.words[that.data.currentNumber - 1].word)) {
         wx.showToast({
           title: '正确！',
@@ -48,14 +49,16 @@ Page({
           duration: 1000
         })
         that.data.inputValue = "";
-        that.setData({ inputValue: that.data.inputValue, currentNumber: that.data.currentNumber + 1})
-      }
-      else {
+        that.setData({
+          inputValue: that.data.inputValue,
+          currentNumber: that.data.currentNumber + 1
+        })
+      } else {
         that.data.wrongWord = that.data.wrongWord.concat(that.data.words[that.data.currentNumber - 1])
-        that.setData({ 
+        that.setData({
           wrongFlag: true,
           wrongWord: that.data.wrongWord,
-           })
+        })
         console.log("wrongWord has been changed to", that.data.wrongWord)
       }
       if (that.data.currentNumber > that.data.totalNumber) {
@@ -64,12 +67,18 @@ Page({
         })
       }
     }
-    that.setData({ inputValue: '' })
+    that.setData({
+      inputValue: ''
+    })
     return ''
   },
-  wrongComfirm: function () {
+  wrongComfirm: function() {
     const that = this;
-    that.setData({ wrongFlag: false, currentNumber: (that.data.currentNumber + 1), inputValue: '' })
+    that.setData({
+      wrongFlag: false,
+      currentNumber: (that.data.currentNumber + 1),
+      inputValue: ''
+    })
     if (that.data.currentNumber > that.data.totalNumber) {
       wx.redirectTo({
         url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
@@ -80,7 +89,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   //接受选择好的数组，并且洗牌
-  onLoad: function (options) {
+  onLoad: function(options) {
     //options应有参数 chosenWord 表示应在recog页面显示的所有单词
     const that = this;
     that.data.chosenWord = JSON.parse(options.chosenWord);
@@ -99,11 +108,13 @@ Page({
         changeOrder[index] = tmp;
       }
     }
-    that.setData({ totalNumber: that.data.chosenWord.length})
-    that.setData({ 
-      words: changeOrder, 
-      section : that.data.section
-      })
+    that.setData({
+      totalNumber: that.data.chosenWord.length
+    })
+    that.setData({
+      words: changeOrder,
+      section: that.data.section
+    })
 
     console.log('洗牌后顺序：', that.data.words, '总数', that.data.totalNumber)
   },
@@ -111,49 +122,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

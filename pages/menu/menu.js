@@ -4,7 +4,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: [false, false, false, false]
+    active: [false, false, false, false],
+    chapter: [{
+      name: "小李赴日",
+      section: [{ index: 1, name: "李さんは　中国人です" }, { index: 2, name: "これわ　本です" }, { index: 3, name: "ここは　デパートです" }, { index: 4, name:"部屋に　机といすが　あります"}],
+    },
+    {
+      name: "小李的公司生活",
+      section: [{ index: 5, name: "森さんは　七時に　起きます"}, { index: 6, name: "吉田さんは　来月　中国へ　行きます"},{ index: 7, name: "李さんは　毎日　コーヒーを　飲みます"},{ index: 8, name: "李さんは　日本語で　手紙を　書きます"}]
+    }],
   },
   //my funtions
   disable: function()
@@ -37,14 +45,14 @@ Page({
       url: '/pages/index/index',
     })
   },
-
+  
   gotoKanaLearn:function()
   {
     wx.navigateTo({
       url: '../kanaLearn/select/select',
       })
   },
-
+  //传递section参数到select页面
   gotoSelect:function(e)
   {
     var index = e.target.dataset.index;

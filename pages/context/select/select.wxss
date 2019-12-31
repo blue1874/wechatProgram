@@ -1,12 +1,10 @@
 /* pages/context/theFirstUnit/theFirstUnit.wxss */
+
 page {
   height: 100%;
 }
 
 .tab {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
   width: 50%;
   text-align: center;
   padding: 10rpx 0;
@@ -14,35 +12,33 @@ page {
   background-color: white;
 }
 
-#word {
-  left: 0;
-}
-
-#exercise{
-  left: 50%;
-}
 
 .topTabSwiper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   border-top: 1px solid rgba(255, 0, 0, 0.349);
   border-bottom: 1px solid rgba(255, 0, 0, 0.349);
   zoom: 1;
 }
- 
+
 .topTabSwiper:after {
   content: "";
   clear: both;
   display: block;
 }
- 
+
 .tabBorer {
   border-bottom: 1px solid rgba(255, 0, 0, 0.349);
   color: rgba(255, 0, 0, 0.397);
 }
+
 .word {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
+
 .words {
   display: flex;
   text-align: left;
@@ -109,10 +105,10 @@ button::after {
 
 .short {
   width: 45%;
-  background-color:rgb(255, 159, 204);
+  background-color: rgb(255, 159, 204);
   color: #fff;
 }
 
 .long {
-  width: 40%
+  width: 40%;
 }

@@ -1,5 +1,22 @@
 <!--pages/menu/menu.wxml-->
-<view class = 'animated section bounceIn'>
+<view class="weui-cells__title">五十音图</view>
+<view class="weui-cells weui-cells_after-title">
+    <navigator url="../kanaLearn/select/select" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">五十音记忆</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </navigator>
+</view>
+<view wx:for="{{chapter}}" wx:for-index="chapter_index" wx:for-item="chapter_content">
+  <view class="weui-cells__title">第{{chapter_index + 1}}单元 {{chapter_content.name}}</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="../context/select/select?section={{section.index}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{chapter_content.section}}" wx:for-item="section">
+          <view class="weui-cell__bd">第{{section.index}}课 {{section.name}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+</view>
+
+<!-- <view class = 'animated section bounceIn'>
   <view class = "function big" bindtap = "gotoKanaLearn">假名自测</view>
 
     <view class = "function big" bindtap = "setActive" data-id = '0'>第一单元（1-4课）</view>
@@ -28,5 +45,5 @@
       <view class = "function small " bindtap = 'gotoSelect' data-index='12'>第十二课</view>
       <view class = "function small" bindtap = 'gotoSelect' data-index='12.5'>单元总结</view>
     </view>
-</view>
+</view> -->
 

@@ -1,9 +1,9 @@
+//数据按section分组
 function getDepartedArrays(arrays, section) {
-  var departedArrays =[];
+  var departedArrays = [];
   //console.log("section:", section)
-  for(var i = 0; i < arrays.length; i++)
-  {
-    if (arrays[i].section == section) 
+  for (var i = 0; i < arrays.length; i++) {
+    if (arrays[i].section == section)
       departedArrays.push(arrays[i]);
   }
   //console.log("departedArrays ",departedArrays)
@@ -20,15 +20,17 @@ function getLength(section, arrays) {
 
   return len;
 }
+
+//返回绝对序号
 function getIndex(index, section, wordSections, arrays) {
   var len = Math.round((section - wordSections[0].section) * 10);
   var cnt = index;
   //console.log("index ", index)
   //console.log("section ", (section - wordSections[0].section) * 10)
   //console.log("len ", len)
-  if(len == 0) return cnt;
+  if (len == 0) return cnt;
   else {
-    while(len > 0) {
+    while (len > 0) {
       len--;
       cnt += getLength(wordSections[len].section, arrays);
     }
@@ -36,11 +38,11 @@ function getIndex(index, section, wordSections, arrays) {
     return cnt;
   }
 }
+//返回序号数组
 function getDepartedIndexArrays(arrays, section, wordSections) {
   var departedArrays = getDepartedArrays(arrays, section);
   var indexArrays = [];
-  for(var i = 0; i < departedArrays.length; i++)
-  {
+  for (var i = 0; i < departedArrays.length; i++) {
     indexArrays.push(getIndex(i, section, wordSections, arrays));
   }
   return indexArrays;

@@ -1,78 +1,85 @@
 /* pages/context/U1/S1/exercise/result.wxss */
-button{
+
+button {
   background-color: #fff;
-  margin-top:5% ;
-  margin-bottom:5% ;
+  margin-top: 5%;
+  margin-bottom: 5%;
   width: 300rpx;
   color: #fac;
 }
+
 button::after {
   border: none;
 }
-.bigBox{
+
+.bigBox {
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  margin-top:100rpx; 
+  margin-top: 100rpx;
   box-sizing: border-box;
 }
-.slogen{
+
+.slogen {
   margin: 2%;
   font-size: 40rpx;
 }
-.smallslogen{
+
+.smallslogen {
   margin: 2%;
   font-size: 30rpx;
 }
 
-text{
-overflow:hidden; 
-text-overflow:ellipsis;
-white-space: nowrap;
+text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.wrongExercisesbox{
+.wrongExercisesbox {
   width: 100%;
   height: 35px;
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: space-between;
   text-align: space-between;
   background-color: #eee;
-  border-style:solid;
-  border-color:#fff; 
-  border-bottom-width:2px;
+  border-style: solid;
+  border-color: #fff;
+  border-bottom-width: 2px;
   border-left: 0;
   border-right: 0;
-  border-top:0; 
+  border-top: 0;
 }
-.wrongExercises{
-   font-size: 20px;
-   display: flex;
-   width: 100%;
-   color:#000;
-   margin-left:10%;
-   margin-right: 10%;
+
+.wrongExercises {
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  color: #000;
+  margin-left: 10%;
+  margin-right: 10%;
   text-align: left;
   padding: 4px;
   background-color: white;
   border-bottom: 1px solid rgba(255, 0, 0, 0.521);
 }
-.folder{
+
+.folder {
   width: 85%;
-  margin-bottom:0%; 
+  margin-bottom: 0%;
   font-size: 20px;
-  color:#faaaac;
-
-
+  color: #faaaac;
 }
-.folderbox{
-  margin-bottom:13%; 
+
+.folderbox {
+  margin-bottom: 13%;
   width: 85%;
 }
-.scroll{
-  height:450rpx;
-  background-color:#eee; 
+
+.scroll {
+  height: 450rpx;
+  background-color: #eee;
 }
