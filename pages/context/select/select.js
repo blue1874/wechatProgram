@@ -12,6 +12,7 @@ Page({
     state: false,
     section: '',
     wordSections: [],
+    exerciseSections: [],
     foldState: [],
     wordTitle: '',
     exerciseTitle: '',
@@ -139,44 +140,75 @@ Page({
   onLoad: function(options) {
     const that = this;
     //var unit = options.unit;
-    var section = options.section;
-    console.log("section", section);
-    //初始化页面，向服务器请求数据
-    var network = require("../../../utils/network.js")
-    network.request({
-      url: 'https://ykkskl.top/dataInterface/data.jsp',
-      //url: 'https://blue1874.github.io/wechat_program_data/data_section_05.md',
+    //切记保证section类型为数字
+    var section = parseFloat(options.section);
+    console.log("section: ", section, " section type: ", typeof(section));
+    that.setData({
+      section: section,
+    })
+    //调用微信小程序云开发API返回数据
+    //查询word数组
+    wx.cloud.callFunction({
+      name: 'inquire',
       data: {
+        type: "word",
         section: section,
       },
-      header: {
-        'content-type': 'application/json'
-      },
-      //request函数为异步执行，为保证同步执行，需将操作放入success回调函数
       success(res) {
-        //初始化时所有单词均为未选中状态
-        //使用数组存储选择以及折叠状态
-        for (var i = 0; i < res.data.words.length; i++) that.data.chosenWord.push(false);
-        for (var i = 0; i < res.data.wordSections.length; i++) that.data.foldState.push(false);
+        console.log("inquire return words data: ", res.result.data);
+        for (var i = 0; i < res.result.data.length; i++) that.data.chosenWord.push(false);
         that.setData({
-          words: res.data.words,
-          exercises: res.data.exercises,
+          words: res.result.data,
           chosenWord: that.data.chosenWord,
-          wordSections: res.data.wordSections,
-          exerciseSections: res.data.exerciseSections,
-          foldState: that.data.foldState,
-          section: section,
         })
-        console.log("返回words组", that.data.words);
-        console.log("返回exercises组", that.data.exercises);
       },
       fail(res) {
-        wx.showToast({
-          title: '网络异常，请刷新重试',
-          icon: 'none'
-        })
+        console.error('failed at calling cloud function inqurire')
       }
-    });
+    })
+    //查询exercises数组
+    wx.cloud.callFunction({
+      name: 'inquire',
+      data: {
+        type: "exercises",
+        section: section,
+      },
+      success(res) {
+        console.log("inquire return exercises data: ", res.result.data);
+        that.setData({
+          exercises: res.result.data,
+        })
+      },
+      fail(res) {
+        console.error('failed at calling cloud function inqurire')
+      }
+    })
+    //查询section数组
+    wx.cloud.callFunction({
+      name: 'inquire',
+      data: {
+        type: "sections",
+        section: section,
+      },
+      success(res) {
+        console.log("inquire return sections data: ", res.result.data);
+        var sections = res.result.data;
+        var wordSections = that.data.wordSections, exerciseSections = that.data.exerciseSections;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i].wordTitle != "") wordSections.push(sections[i]);
+          if (sections[i].exerciseTitle != "") exerciseSections.push(sections[i]);
+        }
+        for (var i = 0; i < wordSections.length; i++) that.data.foldState.push(false);
+        that.setData({
+          wordSections: wordSections,
+          exerciseSections: exerciseSections,
+          foldState: that.data.foldState,
+        })
+      },
+      fail(res) {
+        console.error('failed at calling cloud function inqurire')
+      }
+    })
   },
 
   /**

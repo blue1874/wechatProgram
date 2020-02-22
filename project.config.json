@@ -20,13 +20,15 @@
 			"outputPath": ""
 		}
 	},
+	"cloudfunctionRoot": "functions/",
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.10.1",
 	"appid": "wx31f10e1fa2610b6c",
 	"projectname": "benkyouAssistant",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
+	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",
 	"condition": {
 		"search": {
 			"current": -1,

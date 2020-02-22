@@ -9,7 +9,7 @@
       <text decode='true'>{{k.question}}</text>
     </view>
     <block class='exercises'>
-      <radio-group bindchange="radioChange">
+      <!-- <radio-group bindchange="radioChange">
         <label class="weui-cell weui-check__label" wx:for="{{k.options}}" wx:key="value">
           <radio class="weui-check" value="{{index}}" checked="{{item.checked}}" />
 
@@ -18,7 +18,7 @@
             <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
           </view>
         </label>
-      </radio-group>
+      </radio-group> -->
       <view class="options" wx:for="{{k.options}}" wx:for-item="i" wx:key="">
         <button class="options {{m1.getOptions(chosenOptions, ap, index, page) ? 'animated pulse highlight' : ''}} {{m1.getOptions(correctOps, ap, index, page) ? 'animated flash display_correct' : ''}}" bindtap='chosen' data-index="{{index}}">{{index}} {{i}}
         </button>

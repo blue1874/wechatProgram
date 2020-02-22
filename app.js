@@ -32,6 +32,11 @@ App({
         }
       }
     })
+    //初始化云数据库
+    wx.cloud.init({
+      env: "nihongo-data",
+      traceUser: true,
+    })
   },
   globalData: {
     userInfo: null,
