@@ -1,28 +1,37 @@
 <!--pages/kanaLearn/result.wxml-->
-<view class='bigBox'>
-<icon wx:if="{{!wrongFlag}}" size="{{70}}" color='#ffaacc' icon type='success'/>
-<icon wx:if="{{wrongFlag}}" size="{{70}}" color='#ffaacc' icon type='{{correctNumber==0?"cancel":"warn"}}'/>
-
-<view class='slogen'>正确率：{{correctNumber}}/{{totalNumber}}</view>
-<view class='smallslogen'>{{correctNumber==0?"小老弟你怎么回事…":(percentage==100?"全都对了，学霸！":(percentage>60?"还算不错呢":"得继续加吧劲呢"))}}</view>
-<block wx:if="{{wrongFlag}}">
-  <view class='folderbox'>
-  <button class='folder' bindtap='unfold'>点击查看错误假名{{foldState?"▷":"▽"}}</button>
-  <view hidden='{{foldState}}'>
-  <scroll-view scroll-y='{{(wrongLength>6)?true:false}}' class='(wrongLength>6)?"scrollll":"scrol"'>
-  <block wx:for='{{wrongKanaInOrder}}' wx:for-item='i' wx:key='' >
-   <view class='wrongKanasbox'><label class='wrongKanas'>{{Kana[i].kakiKata}}</label><label class='wrongKanas'>读音为{{Kana[i].yomiKata}}</label></view>
-  </block>
-  </scroll-view>
+<view class="page">
+  <view class="page__hd">
+    <canvas canvas-id="pieCanvas" class="canvas" style="height:250px" bindtouchstart="touchHandler"></canvas>
   </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">错误假名 </view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_access" wx:if="{{wrongFlag}}" wx:for="{{wrongKana}}" wx:for-item="i">
+        <view class="weui-cell__bd">{{i.hiraName}} {{i.kataName}} {{i.roma}}</view>
+      </view>
+      <view class="weui-cell weui-cell_access" wx:if="{{!wrongFlag}}">
+        <view class="weui-cell__bd">全部正确，无错误假名呢！</view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <!-- <button class="weui-btn" type="default" bindtap="open">原生 ActionSheet</button> -->
+      <button class="weui-btn" type="primary" bindtap="openDialog">操作</button>
+    </view>
   </view>
-</block>
-
-<button bindtap='gotoRecog' data-mode='{{0}}'>再来一次</button>
-<block wx:if="{{wrongFlag}}">
-<button bindtap='gotoRecog' data-mode='{{1}}'>错误再刷</button>
-</block>
-<button bindtap='gotoSelect'>重新选择</button>
-<button bindtap='gotoMenu' >返回主菜单</button>
-
+  <view class="weui-demo-dialog {{showDialog ? 'weui-demo-dialog_show' : ''}}">
+    <view class="weui-mask" bindtap="closeDialog"></view>
+    <view class="weui-actionsheet {{showDialog ? 'weui-actionsheet_toggle' : ''}}" catchtap="stopEvent">
+      <!-- <view class="weui-actionsheet__title">
+        <view class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</view>
+      </view> -->
+      <view class="weui-actionsheet__menu">
+        <view class="weui-actionsheet__cell" bindtap='gotoRecog' data-mode='{{0}}'>再来一次</view>
+        <view class="weui-actionsheet__cell" bindtap='gotoRecog' data-mode='{{1}}'>错误再刷</view>
+        <view class="weui-actionsheet__cell weui-actionsheet__cell_warn" bindtap='gotoSelect'>重新选择</view>
+      </view>
+      <view class="weui-actionsheet__action">
+        <view class="weui-actionsheet__cell" bindtap="closeDialog">取消</view>
+      </view>
+    </view>
+  </view>
 </view>

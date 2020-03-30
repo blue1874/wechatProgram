@@ -1698,7 +1698,24 @@
   animation-name: slideInRight;
 }
 
+.slideInLeft {
+  animation-name: slideInLeft;
+}
 
+@keyframes slideInRightHalf {
+  from {
+    transform: translate3d(50%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRightHalf {
+  animation-name: slideInRightHalf;
+}
 
 @keyframes slideInUp {
   from {

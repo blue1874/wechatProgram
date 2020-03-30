@@ -15,20 +15,21 @@
   </block>
 </view> -->
 <view style="display:flex;flex-direction:column;text-align:center">
-  <text>选择你使用的教材</text>
+  <text>请选择你使用的教材</text>
+  <text>使っているテキストを選んでください</text>
 </view>
 <swiper current="{{currentData}}" class='swiper animated'  duration="300" indicator-dots="true" 
  bindchange="bindchange">
 <swiper-item>
     <view class="img-container">  
-      <image src="../../img/book.jpg" mode="aspectFit" bindtap="gotoMenu"></image>
-      <text>新标准日本语</text>
+      <image src="{{fileList[0].tempFileURL}}" mode="aspectFit" bindtap="gotoKata"></image>
+      <text>五十音图（参考新标日）</text>
     </view>
 </swiper-item>
 <swiper-item>
   <view class="img-container">  
-    <image src="../../img/book.jpg" mode="aspectFit"></image>  
-    <text>尚未上线，敬请期待</text>
+    <image src="{{fileList[1].tempFileURL}}" mode="aspectFit" bindtap="gotoMenu"></image>  
+    <text>新标日初级·上册</text>
   </view> 
 </swiper-item>
 </swiper>

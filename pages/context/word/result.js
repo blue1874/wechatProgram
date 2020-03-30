@@ -1,5 +1,6 @@
 // pages/context/U1/S1/word/result.js
 const app = getApp();
+var wxCharts = require('../../../utils/wxcharts.js');
 Page({
 
   /**
@@ -13,6 +14,8 @@ Page({
     wrongFlag: true,
     foldState: true,
     section: '',
+    pieChart: null,
+    showDialog: false,
   },
   //my function
   //返回主菜单
@@ -42,14 +45,26 @@ Page({
       url: '../select/select?section=' + that.data.section,
     })
   },
-  //折叠显示
-  unfold: function() {
-    const that = this;
-    that.setData({
-      foldState: !that.data.foldState
+
+  openDialog: function () {
+    this.setData({
+      showDialog: true
     })
-    console.log('unfold triggered')
   },
+  closeDialog: function () {
+    this.setData({
+      showDialog: false
+    })
+  },
+
+  //折叠显示
+  // unfold: function() {
+  //   const that = this;
+  //   that.setData({
+  //     foldState: !that.data.foldState
+  //   })
+  //   console.log('unfold triggered')
+  // },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -78,6 +93,30 @@ Page({
     if (that.data.wrongWord.length == 0) that.setData({
       wrongFlag: false
     });
+    var windowWidth = 320;
+    try {
+      var res = wx.getSystemInfoSync();
+      windowWidth = res.windowWidth;
+    } catch (e) {
+      console.error('getSystemInfoSync failed!');
+    }
+    var pieChart = new wxCharts({
+      animation: true,
+      canvasId: 'pieCanvas',
+      type: 'pie',
+      series: [{
+        name: '正确单词',
+        data: correctNumber,
+      },
+      {
+        name: '错误单词',
+        data: totalNumber - correctNumber,
+      }
+      ],
+      width: windowWidth,
+      height: 250,
+      dataLabel: true,
+    })
   },
 
   /**

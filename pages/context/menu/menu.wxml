@@ -1,0 +1,11 @@
+<!--pages/menu/menu.wxml-->
+<view wx:for="{{units}}" wx:for-item="i">
+  <view class="weui-cells__title">第{{i.unitIndex}}单元 {{i.unitTitle}}</view>
+  <view class="weui-cells weui-cells_after-title">
+      <navigator url="../select/select?section={{section.index}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{i.section}}" wx:for-item="section">
+          <view class="weui-cell__bd">第{{section.index}}课 {{section.title}}</view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+  </view>
+</view>
+

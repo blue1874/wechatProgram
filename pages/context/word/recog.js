@@ -5,12 +5,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wrongFlag: false,
+    isWrong: false,
     inputValue: '',
     currentNumber: 1,
-    totalNumber: 1,
+    totalNumber: 0,
     section: '',
     words: [],
+    wrongWord: [],
   },
 
   //my function
@@ -29,59 +30,56 @@ Page({
       inputValue: e.detail.value
     })
   },
-
   //点击提交或小键盘的确定按钮事件
   formSubmit: function(e) {
     const that = this;
-    console.log('输入的单词为：', that.data.inputValue)
-    console.log('正确单词为：', that.data.words[that.data.currentNumber - 1].word)
+    console.log('输入的读音为：', that.data.inputValue)
+    console.log('正确读音为：', that.data.words[that.data.currentNumber - 1].word)
     if (that.data.inputValue == '') {
       wx.showToast({
-        title: '请输入假名！',
+        title: '请输入读音！',
         icon: 'loading',
         duration: 1000
       })
     } else {
-      if ((that.data.inputValue == that.data.words[that.data.currentNumber - 1].word)) {
+      if (that.data.inputValue == that.data.words[that.data.currentNumber - 1].word) {
         wx.showToast({
           title: '正确！',
           icon: 'success',
           duration: 1000
         })
-        that.data.inputValue = "";
-        that.setData({
-          inputValue: that.data.inputValue,
-          currentNumber: that.data.currentNumber + 1
-        })
+        that.nextQuestion();
       } else {
-        that.data.wrongWord = that.data.wrongWord.concat(that.data.words[that.data.currentNumber - 1])
+        wx.showToast({
+          title: '答案错误',
+          icon: 'warn',
+          duration: 1000
+        })
         that.setData({
-          wrongFlag: true,
-          wrongWord: that.data.wrongWord,
+          isWrong: true,
+          wrongWord: that.data.wrongWord.concat(that.data.words[that.data.currentNumber - 1]),
         })
         console.log("wrongWord has been changed to", that.data.wrongWord)
       }
-      if (that.data.currentNumber > that.data.totalNumber) {
-        wx.redirectTo({
-          url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
-        })
-      }
     }
-    that.setData({
-      inputValue: ''
-    })
     return ''
   },
-  wrongComfirm: function() {
+  nextQuestion: function() {
     const that = this;
+    if (!that.data.isWrong) {
+      that.setData({
+        correctNumber: that.data.correctNumber + 1
+      })
+    }
     that.setData({
-      wrongFlag: false,
       currentNumber: (that.data.currentNumber + 1),
-      inputValue: ''
+      isWrong: false,
+      inputValue: '',
     })
+    //console.log("currentNumber :", that.data.currentNumber, "totalNumber :", that.data.totalNumber);
     if (that.data.currentNumber > that.data.totalNumber) {
       wx.redirectTo({
-        url: '../word/result?chosenWord=' + JSON.stringify(that.data.chosenWord) + '&wrongWord=' + JSON.stringify(that.data.wrongWord) + '&section=' + that.data.section,
+        url: '../word/result?wrongWord=' + JSON.stringify(that.data.wrongWord) + '&chosenWord=' + JSON.stringify(that.data.words) + '&section=' + that.data.section,
       })
     }
   },

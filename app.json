@@ -2,16 +2,15 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/menu/menu",
     "pages/kanaLearn/select/select",
     "pages/kanaLearn/kanaRecog/kanaRecog",
     "pages/kanaLearn/result/result",
     "pages/context/select/select",
     "pages/context/exercise/recog",
     "pages/context/exercise/result",
+    "pages/context/menu/menu",
     "pages/context/word/recog",
-    "pages/context/word/result",
-    "pages/kanaLearn/select1/select"
+    "pages/context/word/result"
   ],
   "window": {
     "backgroundTextStyle": "light",

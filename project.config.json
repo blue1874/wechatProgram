@@ -57,13 +57,13 @@
 					"id": 0,
 					"name": "select 页面",
 					"pathName": "pages/context/select/select",
-					"query": "section=5",
+					"query": "section=4",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "result_exercise 页面",
-					"pathName": "pages/context/select/select",
+					"id": 1,
+					"name": "pages/context/exercise/result",
+					"pathName": "pages/context/exercise/result",
 					"query": "wrongExercises",
 					"scene": null
 				},

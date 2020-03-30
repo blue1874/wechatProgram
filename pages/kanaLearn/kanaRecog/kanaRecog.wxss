@@ -1,77 +1,11 @@
 /* pages/kanaLearn/kanaRecog.wxss */
-.slogen{
-justify-content: center; 
-align-items: center;
-text-align: center;
-color: #fac;
-
-}
 
 .kana{
-justify-content: center; 
-align-items: center;
-text-align: center;
-margin-top: 10%;
-margin-bottom: 10%;
-font-size: 150rpx;
-color: #fac;
+font-size: 100rpx;
 font-family: monospace;
 }
 
-.bi{
-justify-content: center; 
-display: flex;
-align-items: center;
-text-align: center;
-flex-direction: column;
-margin-top: 10%;
-margin-bottom: 5%;
-}
-
-input{
-width:300rpx;
-height:50rpx;
-border-style:solid; 
-border-width: 2rpx;
-border-color: #fac;
-border-radius: 10rpx;
-color:#fac;
-justify-content: center; 
-align-items: center;
-text-align: center;
-
-}
-.inputblank{
-  display:block;
-  margin-bottom:10%; 
-  justify-content: center; 
-  align-items: center;
-  text-align: center;
-}
-.be{
-  justify-content: center; 
-display: flex;
-align-items: center;
-text-align: center;
-flex-direction: column;
-margin-top: 20%;
-margin-bottom: 5%;
-
-}
 button{
   width: 300rpx;
-  margin-top:80rpx; 
-  border-style: solid;
-  border-width:2rpx; 
-  color: #fac;
+
 }
-.function{
-  
-  margin-top: 80rpx;
-  width:300rpx;
-  justify-content: center; 
-  align-items: center;
-  text-align: center;
-  color:#fff ;
-  background-color: #fac;
-}    

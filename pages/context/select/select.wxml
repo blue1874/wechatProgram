@@ -1,38 +1,58 @@
 <!--pages/context/theFirstUnit/theFirstSection.wxml-->
-<!-- function.wxs 提供一些不方便在js里实现的函数-->
-<wxs src="function.wxs" module="function"></wxs>
+<!-- function.wxs 提供一些不方便在js里实现的函数 已弃用-->
+<!-- <wxs src="function.wxs" module="function"></wxs> -->
 <view class='topTabSwiper'>
-  <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'data-current="0" bindtap='checkCurrent'>单词</view>
-  <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'data-current="1" bindtap='checkCurrent'>练习</view>
+  <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}' data-current="0" bindtap='checkCurrent'>单词</view>
+  <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}' data-current="1" bindtap='checkCurrent'>练习</view>
 </view>
 <swiper current="{{currentData}}" class='swiper' duration="300" bindchange="bindchange">
   <swiper-item>
-  <!-- 滚动区 -->
+    <!-- 滚动区 -->
     <scroll-view scroll-y="true" style="height: 100%;" enable-back-to-top="true" class="animated fadeIn">
-    <!-- 按section分的单词 -->
-      <view wx:for="{{wordSections}}" wx:for-item="k" wx:key="">
-        <view class='word'>
-        <!-- fold函数控制是否折叠 -->
-          <button class="folder" bindtap="fold" data-index="{{index}}">{{k.wordTitle}} {{function.getLength(k.section, words)}}个单词</button>
-          <button class="select" bindtap="partedChosen" data-departedIndexArrays="{{function.getDepartedIndexArrays(words, k.section, wordSections)}}" class="">选择</button>
-        </view>
-        <view wx:if="{{foldState[index]}}">
-          <view wx:for="{{function.getDepartedArrays(words, k.section)}}" wx:for-item="i" wx:key="" class="animated slideInDown">
-          <!-- 点击触发选择函数 -->
-            <button class='words {{chosenWord[function.getIndex(index, k.section, wordSections, words)] ? "highlight" : ""}}' bindtap='wordChosen' data-index="{{function.getIndex(index, k.section, wordSections, words)}}">{{i.word}} {{i.property}} {{i.meaning}}</button>
-          </view>
-        </view>
+      <!-- 按section分的单词 -->
+      <view class="weui-cells weui-cells_checkbox weui-cells_after-title">
+        <checkbox-group bindchange="checkboxChange">
+          <label class="weui-cell weui-check__label" wx:for="{{wordSections}}" wx:key="value">
+            <checkbox class="weui-check" value="{{index}}" checked="{{item.checked}}" />
+
+            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+            </view>
+            <view class="weui-cell__bd">{{item.wordTitle}} {{partedWords[index].length}}单词</view>
+            <!-- <view class="weui-cell__bd" wx:if="{{item.checked}}" wx:for="{{partedWords[index]}}">
+              {{item.word}} {{item.property}} {{item.meaning}}
+            </view> -->
+          </label>
+        </checkbox-group>
       </view>
+      <!-- <view wx:for="{{wordSections}}" wx:for-item="k" wx:key="*this">
+        <view class='word'>
+          <button class="folder" bindtap="fold" data-index="{{index}}">{{k.wordTitle}} {{partedWords[index].length}}个单词</button>
+          <button class="select" bindtap="partedChosen" data-index="{{index}}" class="">选择</button>
+        </view>
+      </view> -->
       <view class="center-item_bottom">
         <button class='short' bindtap='wordAllChosen'>全选</button>
-        <!-- <button class='short' bindtap='wordUnChosen'>反选</button> -->
         <button class='short' bindtap='wordInput' disabled='{{!state}}'>提交</button>
       </view>
     </scroll-view>
   </swiper-item>
   <swiper-item>
-    <view wx:for="{{exerciseSections}}" wx:for-item="k" wx:key="">
-      <button bindtap="navigateToExercises" data-chosenExercises="{{function.getDepartedArrays(exercises, k.section)}}" data-exerciseTitle="{{k.exerciseTitle}}">{{k.exerciseTitle}} {{function.getLength(k.section, exercises)}}道题目</button>
+    <view class="weui-cells weui-cells_after-title">
+      <radio-group bindchange="radioChange">
+        <label class="weui-cell weui-check__label" wx:for="{{exerciseSections}}" wx:key="value">
+          <radio class="weui-check" value="{{index}}" checked="{{item.checked}}" />
+
+          <view class="weui-cell__bd">{{item.exerciseTitle}} {{partedExercises[index].length}}道题目</view>
+          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+            <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+          </view>
+        </label>
+      </radio-group>
+    </view>
+    <view class="center-item_bottom">
+      <button class='short' bindtap='navigateToExercises'>提交</button>
     </view>
   </swiper-item>
 </swiper>

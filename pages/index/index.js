@@ -4,6 +4,7 @@ const app = getApp()
 
 Page({
   data: {
+    fileList: [],
     motto: '欢迎使用学习助手！',
     userInfo: {},
     hasUserInfo: false,
@@ -16,6 +17,24 @@ Page({
     })
   },
   onLoad: function () {
+    wx.cloud.getTempFileURL({
+      fileList: [{
+        fileID: 'cloud://nihongo-data.6e69-nihongo-data-1258838329/cover/五十音.jpg', 
+        maxAge: 60 * 60,
+        },
+        {
+          fileID: 'cloud://nihongo-data.6e69-nihongo-data-1258838329/cover/初级上.jpg',
+          maxAge: 60 *60,
+        }
+        ],
+      success: res => {
+        console.log(res.fileList)
+        this.setData({
+          fileList: res.fileList,
+        })
+      },
+      fail: console.error
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -54,7 +73,12 @@ Page({
   //my functions
   gotoMenu: function () {
     wx.navigateTo({
-      url: "../menu/menu",
+      url: "../context/menu/menu",
     })
   },
+  gotoKata: function () {
+    wx.navigateTo({
+      url: '../kanaLearn/select/select',
+    })
+  }
 })

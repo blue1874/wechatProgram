@@ -1,5 +1,6 @@
 // pages/context/U1/S1/exercise/result.js
 const app = getApp();
+var wxCharts = require('../../../utils/wxcharts.js');
 Page({
   /**
    * 页面的初始数据
@@ -15,6 +16,8 @@ Page({
     percentage: 0,
     section: '',
     exerciseTitle: '',
+    showDialog: false,
+    pieChart: null,
   },
   //my function
   //返回主菜单
@@ -23,6 +26,13 @@ Page({
       url: '/pages/menu/menu',
     })
   },
+  gotoSelect: function () {
+    const that = this;
+    wx.redirectTo({
+      url: '../select/select?section=' + that.data.section,
+    })
+  },
+
   //再来一次（0为保持原选择数组进入识别界面，1为择错数组替换选择数组进入识别界面）
   gotoRecog: function(e) {
     const that = this;
@@ -35,6 +45,17 @@ Page({
         url: '../exercise/recog?exercises=' + JSON.stringify(that.data.exercises) + '&section=' + that.data.section + '&exerciseTitle=' + that.data.exerciseTitle,
       })
     }
+  },
+
+  openDialog: function () {
+    this.setData({
+      showDialog: true
+    })
+  },
+  closeDialog: function () {
+    this.setData({
+      showDialog: false
+    })
   },
   //折叠显示
   unfold: function() {
@@ -69,6 +90,30 @@ Page({
     if (that.data.wrongExercise.length == 0) that.setData({
       wrongFlag: false
     });
+    var windowWidth = 320;
+    try {
+      var res = wx.getSystemInfoSync();
+      windowWidth = res.windowWidth;
+    } catch (e) {
+      console.error('getSystemInfoSync failed!');
+    }
+    var pieChart = new wxCharts({
+      animation: true,
+      canvasId: 'pieCanvas',
+      type: 'pie',
+      series: [{
+        name: '正确单词',
+        data: that.data.correctNumber,
+      },
+      {
+        name: '错误单词',
+        data: that.data.totalNumber - that.data.correctNumber,
+      }
+      ],
+      width: windowWidth,
+      height: 250,
+      dataLabel: true,
+    })
   },
 
   /**
